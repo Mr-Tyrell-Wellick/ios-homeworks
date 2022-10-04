@@ -31,8 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //         MARK: - 3
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
-        userInterfaceLayout = UINavigationController.init(rootViewController: UserTabVC())
-        profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileTabVC())
+        userInterfaceLayout = UINavigationController.init(rootViewController: FeedViewController())
+        profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileViewController())
         
         //         MARK: - 4
         // Заполняем  2 контейнера с контроллерами таббара нашими навигационными контроллерами

@@ -15,29 +15,23 @@ class InfoViewController: UIViewController {
     
     //создаем кнопку для закрытия модального окна
     private let button: UIButton = {
-        let button = UIButton(frame: CGRect(x: 165, y: 50, width: 75, height: 40))
+        let button = UIButton()
         button.setTitle("Close", for: .normal)
         button.setTitleColor(UIColor .white, for: .normal)
         button.backgroundColor = .black
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     // создаем кнопку для показа Alert'a
     
     private let buttonAlert: UIButton = {
-        let button = UIButton(frame: CGRect(x: 165, y: 400, width: 75, height: 40))
+        let button = UIButton()
         button.setTitle("Alert", for: .normal)
         button.backgroundColor = .black
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    
-    
-    
-    //    func addTarget() {
-    //        button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
-    //    }
-    //
     
     //MARK: - Methods
     
@@ -47,6 +41,8 @@ class InfoViewController: UIViewController {
         view.addSubview(button)
         view.addSubview(buttonAlert)
         setupAlertConfiguration()
+        
+        addConstrait()
         
         // target на закрытие окна
         button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
@@ -74,5 +70,16 @@ class InfoViewController: UIViewController {
         }))
         
     }
+    
+    //MARK: - Constraints
+    
+    func addConstrait() {
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            buttonAlert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonAlert.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
 }
-

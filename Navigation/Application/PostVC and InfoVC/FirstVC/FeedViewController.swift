@@ -12,55 +12,80 @@ struct Post {
     var title: String
 }
 
-
-class UserTabVC: UIViewController {
+class FeedViewController: UIViewController {
     
-//    создание  по заданию
-    var postTitle = Post(title: "Post Title")
+    //    создание  по заданию
     
-    
+    var postTitle: Post = Post(title: "Post Title")
     
     // MARK: - Properties
     
-    private let titleLable: UILabel = {
-        let label = UILabel(frame: CGRect(x: 180, y: 40, width: 350, height: 100))
-        label.text = "Feed"
-        label.textColor = .black
-        return label
-    }()
- 
-    private let descriptionLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 160, y: 150, width: 350, height: 100))
-        label.textColor = .systemGray
-        return label
-    }()
     
+    //создание кнопки для просмотра поста
     private let button: UIButton = {
-        let button = UIButton(frame: CGRect(x: 160, y: 450, width: 95, height: 35))
+        let button = UIButton()
         button.setTitle("View Post", for: .normal)
-        button.setTitleColor(UIColor .black, for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemIndigo
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        // target на кнопку
+        button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
         return button
     }()
-
-
-    // MARK: - Methods
-
-override func viewDidLoad() {
-    super.viewDidLoad()
-    view.addSubview(titleLable)
-    view.addSubview(descriptionLabel)
-    view.addSubview(button)
-    addTarget()
-    view.backgroundColor = .white
-}
-
-    // target на кнопку
     
-    func addTarget() {
+    
+    // создание второй кнопки
+    
+    private let buttonTwo: UIButton = {
+        let button = UIButton()
+        button.setTitle("Second View Post", for: .normal)
+        button.backgroundColor = .systemRed
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //target на вторую кнопку
         button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
+        return button
+    }()
+    
+    // создаем стеквью
+    private let stackViewButton: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalCentering
+        stackView.alignment = .center
+        stackView.spacing = 10.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    // MARK: - Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        self.title = "Feed"
+        //отображение кнопок на экране
+        view.addSubview(stackViewButton)
+        // сборка и добавление на экран
+        addView()
+        setConstraint()
     }
     
+    
+    func addView() {
+        // объединение кнопок в stackView
+        stackViewButton.addArrangedSubview(button)
+        stackViewButton.addArrangedSubview(buttonTwo)
+    }
+    
+    // MARK: - constraints
+    
+    func setConstraint() {
+        NSLayoutConstraint.activate([
+            stackViewButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackViewButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
     
     // функция обработки нажатия на кнопку
     @objc func showPostController() {
@@ -68,7 +93,6 @@ override func viewDidLoad() {
         detailController.titlePost = postTitle.title
         navigationController?.pushViewController(detailController, animated: false)
     }
-    
-    }
+}
 
 
