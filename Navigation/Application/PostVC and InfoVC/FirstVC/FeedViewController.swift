@@ -8,18 +8,16 @@
 import Foundation
 import UIKit
 
-struct Post {
+struct PostFeed {
     var title: String
 }
 
 class FeedViewController: UIViewController {
     
     //    создание  по заданию
-    
-    var postTitle: Post = Post(title: "Post Title")
+    var postTitle: PostFeed = PostFeed(title: "Post Title")
     
     // MARK: - Properties
-    
     
     //создание кнопки для просмотра поста
     private let button: UIButton = {
@@ -33,9 +31,7 @@ class FeedViewController: UIViewController {
         return button
     }()
     
-    
     // создание второй кнопки
-    
     private let buttonTwo: UIButton = {
         let button = UIButton()
         button.setTitle("Second View Post", for: .normal)
@@ -70,7 +66,6 @@ class FeedViewController: UIViewController {
         addView()
         setConstraint()
     }
-    
     
     func addView() {
         // объединение кнопок в stackView

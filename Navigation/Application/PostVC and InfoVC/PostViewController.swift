@@ -14,7 +14,6 @@ class PostViewController: UIViewController {
     // создаем переменную для текста заголовка, куда будет передаваться заголовок из FeedViewController
     var titlePost: String = ""
     
-    
     // создаем заголовок без текста
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -22,7 +21,6 @@ class PostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     // MARK: - Methods
     
@@ -53,8 +51,8 @@ class PostViewController: UIViewController {
 
 
 
-    
-    
-    
-    
- 
+
+
+
+
+

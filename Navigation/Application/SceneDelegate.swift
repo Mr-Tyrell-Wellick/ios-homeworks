@@ -12,6 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     
+    
+    
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -28,29 +32,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // создаем два UINavigationController'a, отвечающие за ленту и профиль
         var userInterfaceLayout = UINavigationController()
         var profileInterfaceLayout = UINavigationController()
+        var loginTabNavigationController = UINavigationController()
         
         //         MARK: - 3
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
         userInterfaceLayout = UINavigationController.init(rootViewController: FeedViewController())
         profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileViewController())
+        loginTabNavigationController = UINavigationController.init(rootViewController: LogInViewController())
         
         //         MARK: - 4
         // Заполняем  2 контейнера с контроллерами таббара нашими навигационными контроллерами
-        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
+//        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
+        tabBarController.viewControllers = [userInterfaceLayout, loginTabNavigationController]
         
         
+    
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
         
         let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
         let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
-        
+    
         
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
         
         userInterfaceLayout.tabBarItem = item1
         profileInterfaceLayout.tabBarItem = item2
+        loginTabNavigationController.tabBarItem = item2
+        
         
         //         MARK: - 7
         // Обращаемся к методу, который позволяет кастомизировать TabBar под себя
@@ -66,8 +76,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
     }
-    
-    
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
