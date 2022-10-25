@@ -7,6 +7,12 @@
 
 import Foundation
 import UIKit
+
+// размер для ячеек первой секции (которая виднеется в ленте)
+
+let itemSize = (UIScreen.main.bounds.width - 48)/4
+
+
 struct Post {
     var author: String
     var description: String
