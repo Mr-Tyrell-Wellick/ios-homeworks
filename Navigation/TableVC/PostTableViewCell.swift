@@ -93,7 +93,6 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    
     // MARK: - добавление view
     
     func addView() {
@@ -104,7 +103,6 @@ class PostTableViewCell: UITableViewCell {
         self.contentView.addSubview(likes)
         self.contentView.addSubview(views)
     }
-    
     
     // MARK: - Constraints
     

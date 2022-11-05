@@ -21,6 +21,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -86,6 +87,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
         addViews()
         addConstraints()
+        addGestures()
+        addNotifications()
     }
     
     required init?(coder: NSCoder) {
@@ -117,7 +120,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    
     // MARK: - Constraints
     
     func addConstraints(){
@@ -140,7 +142,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             //текст, который будет писаться в статус
             statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
             statusTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            statusTextField.widthAnchor.constraint(equalToConstant: 220),
+            statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
             //кнопка для показа нового статуса
@@ -152,5 +154,32 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             self.bottomAnchor.constraint(equalTo: setStatusButton.bottomAnchor, constant: 30)
         ])
     }
+    
+    //MARK: - Работа с аватаркой
+    
+    // гестура на клик аватарки
+    func addGestures() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture(_:)))
+        self.avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func addNotifications() {
+        //уведомление о закрытии
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didTapClose(notification:)),
+                                               name: Notification.Name("close"),
+                                               object: nil)
+    }
+    // действия при тапе на аватарку
+    @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        //уведомляем о тапе по аватарке
+        NotificationCenter.default.post(name: Notification.Name("Avatar Tap"), object: nil)
+        // сокрытие оригинала аватарки при клике
+        avatarImageView.isHidden = true
+        
+    }
+    // В случае получения уведомления выполняем
+    @objc func didTapClose(notification: Notification) {
+        avatarImageView.isHidden = false
+    }
 }
-

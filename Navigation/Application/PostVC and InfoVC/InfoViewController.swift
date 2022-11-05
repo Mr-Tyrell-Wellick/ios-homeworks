@@ -19,16 +19,17 @@ class InfoViewController: UIViewController {
         button.setTitle("Close", for: .normal)
         button.setTitleColor(UIColor .white, for: .normal)
         button.backgroundColor = .black
+        button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     // создаем кнопку для показа Alert'a
-    
     private let buttonAlert: UIButton = {
         let button = UIButton()
         button.setTitle("Alert", for: .normal)
         button.backgroundColor = .black
+        button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

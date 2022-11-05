@@ -19,7 +19,6 @@ class LogInViewController: UIViewController {
         return scrollView
     }()
     
-    //
     //    создание VK лого
     private lazy var logoImageView: UIImageView = {
         let image = UIImageView()

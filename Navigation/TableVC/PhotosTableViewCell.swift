@@ -37,6 +37,7 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 8
+        layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         return layout
     }()
@@ -66,9 +67,9 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     func addViews() {
-        addSubview(titleLabel)
-        addSubview(arrowImage)
-        addSubview(collectionView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(arrowImage)
+        contentView.addSubview(collectionView)
     }
     
     //MARK: - Constraints
@@ -85,7 +86,7 @@ class PhotosTableViewCell: UITableViewCell {
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: itemSize),
+//            collectionView.heightAnchor.constraint(equalToConstant: itemSize),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12)
         ])
     }
@@ -94,7 +95,7 @@ class PhotosTableViewCell: UITableViewCell {
 extension PhotosTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

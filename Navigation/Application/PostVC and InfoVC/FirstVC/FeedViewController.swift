@@ -25,6 +25,7 @@ class FeedViewController: UIViewController {
         button.setTitle("View Post", for: .normal)
         button.backgroundColor = .systemIndigo
         button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
         // target на кнопку
         button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
@@ -37,6 +38,7 @@ class FeedViewController: UIViewController {
         button.setTitle("Second View Post", for: .normal)
         button.backgroundColor = .systemRed
         button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
         //target на вторую кнопку
         button.addTarget(self, action: #selector(showPostController), for: .touchUpInside)
@@ -65,7 +67,18 @@ class FeedViewController: UIViewController {
         // сборка и добавление на экран
         addView()
         setConstraint()
+     createBlur()
     }
+        //MARK: - БЛЮР
+        // функция блюра
+        func createBlur() {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let vissualEffectView = UIVisualEffectView(effect: blurEffect)
+        view.frame = view.bounds
+        view.addSubview(vissualEffectView)
+        }
+            
+        
     
     func addView() {
         // объединение кнопок в stackView
