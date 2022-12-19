@@ -67,19 +67,8 @@ class FeedViewController: UIViewController {
         // сборка и добавление на экран
         addView()
         setConstraint()
-     createBlur()
     }
-        //MARK: - БЛЮР
-        // функция блюра
-        func createBlur() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let vissualEffectView = UIVisualEffectView(effect: blurEffect)
-        view.frame = view.bounds
-        view.addSubview(vissualEffectView)
-        }
-            
-        
-    
+      
     func addView() {
         // объединение кнопок в stackView
         stackViewButton.addArrangedSubview(button)
@@ -102,5 +91,3 @@ class FeedViewController: UIViewController {
         navigationController?.pushViewController(detailController, animated: false)
     }
 }
-
-

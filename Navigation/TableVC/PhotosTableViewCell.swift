@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import StorageService
+
 
 class PhotosTableViewCell: UITableViewCell {
     

@@ -26,7 +26,7 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
         //меняем заголовок на вновь пришедший
         self.title = titlePost
         
@@ -44,15 +44,3 @@ class PostViewController: UIViewController {
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
@@ -64,7 +65,13 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        // Версию Release оставляем без изменений. В версии Debug изменяем цвет фона
+        #if DEBUG
+        view.backgroundColor = .blue
+        #else
         view.backgroundColor = UIColor(red: 245/255.0, green: 248/255.0, blue: 250/255.0, alpha: 1)
+        #endif
         
         addViews()
         addConstraints()

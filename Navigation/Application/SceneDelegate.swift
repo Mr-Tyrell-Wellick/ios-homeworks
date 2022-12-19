@@ -11,11 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
-    
-    
-    
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -26,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //         MARK: - 1
         //  инициализируем класс TabBarController
         let tabBarController = UITabBarController()
-        
         
         //         MARK: - 2
         // создаем два UINavigationController'a, отвечающие за ленту и профиль
@@ -45,15 +39,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
         tabBarController.viewControllers = [userInterfaceLayout, loginTabNavigationController]
         
-        
-    
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
         
         let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
         let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
     
-        
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
         
@@ -61,12 +52,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileInterfaceLayout.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item2
         
-        
         //         MARK: - 7
         // Обращаемся к методу, который позволяет кастомизировать TabBar под себя
         UITabBar.appearance().tintColor = UIColor .systemBlue
         UITabBar.appearance().backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)
-        
         
         // MARK: - 8
         // Заполняем окно, назначаем ему рутовый экран и делаем видимым
@@ -77,6 +66,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
     }
     
+    
+        //MARK: - Others
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
