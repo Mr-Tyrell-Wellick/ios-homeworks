@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
@@ -67,11 +68,11 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         // Версию Release оставляем без изменений. В версии Debug изменяем цвет фона
-        #if DEBUG
+#if DEBUG
         view.backgroundColor = .blue
-        #else
+#else
         view.backgroundColor = UIColor(red: 245/255.0, green: 248/255.0, blue: 250/255.0, alpha: 1)
-        #endif
+#endif
         
         addViews()
         addConstraints()
@@ -255,7 +256,25 @@ extension ProfileViewController: UITableViewDataSource {
                 return cell
             }
             
-            let post = posts[indexPath.row]
+            
+            // Использование фильтров по заданию. Добавляем различные фильтры, используя iOSIntPackage.
+            
+            var post = posts[indexPath.row]
+            
+            let imageFilter = ImageProcessor()
+            
+            if let sImage = post.image {
+                if indexPath.row % 2 == 0 {
+                    imageFilter.processImage(sourceImage: sImage, filter: .fade) {
+                        filteredImage in post.image = filteredImage
+                    }
+                } else {
+                    imageFilter.processImage(sourceImage: sImage, filter: .noir) {
+                        filteredImage in post.image = filteredImage
+                    }
+                }
+            }
+            
             let postViewModel = PostTableViewCell.ViewModel(
                 author: post.author,
                 descriptionText: post.description,

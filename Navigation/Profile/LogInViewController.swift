@@ -58,7 +58,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    // согласно макету есть разделить между полями для ввода
+    // согласно макету есть разделитель между полями для ввода
     private lazy var line: UIView = {
         let line = UIView()
         line.backgroundColor = .lightGray

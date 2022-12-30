@@ -5,8 +5,8 @@
 //  Created by Ульви Пашаев on 16.09.2022.
 //
 
-import Foundation
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
@@ -120,39 +120,40 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    // MARK: - Constraints
-    
-    func addConstraints(){
-        NSLayoutConstraint.activate([
-            
-            //аватарка
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
-            
-            //имя лейбла
-            fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
-            fullNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            
-            //сам статус
-            statusLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 54),
-            statusLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            
-            //текст, который будет писаться в статус
-            statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
-            statusTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            //кнопка для показа нового статуса
-            setStatusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 132),
-            setStatusButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            setStatusButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            setStatusButton.widthAnchor.constraint(equalToConstant: 340),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            self.bottomAnchor.constraint(equalTo: setStatusButton.bottomAnchor, constant: 30)
-        ])
+    // MARK: - Constraints (с использованием SnapKit)
+    func addConstraints() {
+        
+        //аватарка
+        avatarImageView.snp.makeConstraints { (make) -> Void in
+            make.height.width.equalTo(100)
+            make.top.equalTo(self.snp.top).offset(16)
+            make.left.equalTo(self.snp.left).offset(16)
+        }
+        // имя лейбла
+        fullNameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(27)
+            make.left.equalTo(self.snp.left).offset(140)
+        }
+        // сам статус
+        statusLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(54)
+            make.left.equalTo(self.snp.left).offset(140)
+        }
+        //текст, который будет писаться в статус
+        statusTextField.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(80)
+            make.left.equalTo(self.snp.left).offset(140)
+            make.right.equalTo(self.snp.right).offset(-16)
+            make.height.equalTo(40)
+        }
+        //кнопка для показа нового статуса
+        setStatusButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(132)
+            make.left.equalTo(self.snp.left).offset(16)
+            make.right.equalTo(self.snp.right).offset(-16)
+            make.height.equalTo(50)
+            make.bottom.equalTo(self.snp.bottom).offset(-16)
+        }
     }
     
     //MARK: - Работа с аватаркой
