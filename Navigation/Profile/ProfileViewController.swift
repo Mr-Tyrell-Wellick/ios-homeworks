@@ -11,6 +11,12 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
+    // добавление свойства типа User и длеаем отображение информации на экране профиля, включая изображение аватара
+    
+    var user_1: User = User(login: "Hector", userName: "Hector Salamanca", avatar: UIImage(named: "Hector") ?? UIImage(), status: "My family")
+    
+    
+    // MARK: - Properties
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
@@ -202,7 +208,9 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return ProfileHeaderView()
+            let profile = ProfileHeaderView()
+            profile.setupStatus(user: user_1)
+            return profile
         }
         return nil
     }

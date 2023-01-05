@@ -10,7 +10,7 @@ import UIKit
 
 
 class LogInViewController: UIViewController {
-    
+ 
     // MARK: - Properties
     
     private lazy var scrollView: UIScrollView = {
@@ -37,9 +37,8 @@ class LogInViewController: UIViewController {
         button.layer.borderWidth = 0.5
         button.translatesAutoresizingMaskIntoConstraints = false
         //target на кнопку
-        button.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showProfileView), for: .touchUpInside)
         return button
-        //поменять функцию таргета!!!! Потому что кнопка должна переключать на другой экран
     }()
     
     // создание кнопки для ввода email or phone
@@ -121,12 +120,33 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(stackViewTextField)
         scrollView.addSubview(logInbutton)
         
+        // создаем action для alert'a
+        alertController.addAction(UIAlertAction(title: "Попробовать снова", style: .default))
+        
     }
     
-    //функция нажатия на клавишу Log In
-    @objc func pressButton() {
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
+    // создаем alert в случае неверного ввода логина
+    let alertController = UIAlertController(title: "Ошибка ввода", message: "Логин введен неверно", preferredStyle: .alert)
+   
+    //функция нажатия на клавишу Log In открывает ProfileView (p.s. внесены изменения. Согласно заданию, если debug - версия, то отображается один контент, если release - версия, то другой контент)
+    @objc func showProfileView() {
+        
+        // текст, который вводит пользователь в первую строку (где указывается логин)
+        let enteredUserLogin = logInTextField.text
+        
+        #if DEBUG
+        let userLogin = TestUserService(user: User(login: "Salamanca", userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
+        #else
+        let userLogin = CurrentUserService(user: User(login: "Lalo", userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
+        #endif
+        
+        if userLogin.checkLogin(login: enteredUserLogin ?? "") != nil {
+            let profileViewController = ProfileViewController()
+            profileViewController.user_1 = userLogin.user
+            navigationController?.pushViewController(profileViewController, animated: true)
+        } else {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - KEYBOARD (вся работа с клавиатурой)

@@ -97,6 +97,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - Methods
     
+    // настройка статуса. Присваиваем новые значения статуса, имени и аватарки, используя новый класс User.
+    func setupStatus(user: User) {
+        fullNameLabel.text = user.userName
+        statusLabel.text = user.status
+        avatarImageView.image = user.avatar
+    }
+    
     func addViews() {
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
@@ -119,6 +126,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusText = text
         }
     }
+    
     
     // MARK: - Constraints
     
