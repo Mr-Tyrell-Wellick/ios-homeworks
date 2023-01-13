@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     
     // добавление свойства типа User и длеаем отображение информации на экране профиля, включая изображение аватара
     
-    var user_1: User = User(login: "Hector", userName: "Hector Salamanca", avatar: UIImage(named: "Hector") ?? UIImage(), status: "My family")
+    var user_1: User = User(userName: "", avatar: UIImage(), status: "")
     
     
     // MARK: - Properties

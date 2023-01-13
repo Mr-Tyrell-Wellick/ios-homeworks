@@ -32,11 +32,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
         userInterfaceLayout = UINavigationController.init(rootViewController: FeedViewController())
         profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileViewController())
-        loginTabNavigationController = UINavigationController.init(rootViewController: LogInViewController())
         
+/*
+        /// Внедряем зависимость контроллера LoginViewController от LoginInspector
+    let loginVC = LogInViewController()
+        loginVC.loginDelegate = LoginInspector()
+        loginTabNavigationController = UINavigationController.init(rootViewController: loginVC)
+ */
+        // Внедряем зависимость контроллера LoginViewController от MyLoginFactory
+        let loginVC = LogInViewController()
+        loginVC.loginDelegate = MyLoginFactory().makeLoginInspector()
+        loginTabNavigationController = UINavigationController.init(rootViewController: loginVC)
+        
+
         //         MARK: - 4
         // Заполняем  2 контейнера с контроллерами таббара нашими навигационными контроллерами
-//        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
+        //        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
         tabBarController.viewControllers = [userInterfaceLayout, loginTabNavigationController]
         
         //         MARK: - 5
@@ -44,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
         let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
-    
+        
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
         
@@ -65,8 +76,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
     }
-    
-    
+  
         //MARK: - Others
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

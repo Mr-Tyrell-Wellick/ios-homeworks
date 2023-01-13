@@ -12,6 +12,10 @@ import UIKit
 class LogInViewController: UIViewController {
  
     // MARK: - Properties
+ 
+    // создаем свойство loginDelegate c типом LoginViewControllerDelegate, который будет проверять значения, введенные в текстовые поля контроллера (login and password)
+    var loginDelegate: LoginViewControllerDelegate?
+    
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -133,14 +137,17 @@ class LogInViewController: UIViewController {
         
         // текст, который вводит пользователь в первую строку (где указывается логин)
         let enteredUserLogin = logInTextField.text
+        // текст, который вводит пользователь во вторую строку (где указывается пароль)
+        let enteredPassword = passwordTextField.text
         
-        #if DEBUG
-        let userLogin = TestUserService(user: User(login: "Salamanca", userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
-        #else
-        let userLogin = CurrentUserService(user: User(login: "Lalo", userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
-        #endif
+#if DEBUG
         
-        if userLogin.checkLogin(login: enteredUserLogin ?? "") != nil {
+        let userLogin = TestUserService(user: User(userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
+#else
+        let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
+#endif
+        
+        if loginDelegate?.check(self, login: enteredUserLogin ?? "", password: enteredPassword ?? "") == true {
             let profileViewController = ProfileViewController()
             profileViewController.user_1 = userLogin.user
             navigationController?.pushViewController(profileViewController, animated: true)
