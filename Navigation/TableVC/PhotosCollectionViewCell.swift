@@ -29,10 +29,15 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // функция отображения изображения
+    // функция отображения изображения (по имени)
     
     func setup(with name: String) {
         self.image.image = UIImage(named: name)
+    }
+    
+    // функция отображения изображения (по картинке)
+    func setupImagePublisher(image: UIImage) {
+        self.image.image = image
     }
     
     //MARK: - Constraints

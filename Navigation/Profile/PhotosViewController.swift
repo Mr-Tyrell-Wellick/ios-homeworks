@@ -7,8 +7,14 @@
 
 import Foundation
 import UIKit
+import iOSIntPackage
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, ImageLibrarySubscriber {
+    
+    // создание экземпляра класса ImagePublisherFacade
+    var imagePublisher = ImagePublisherFacade()
+    
+    //MARK: - Properties
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -36,6 +42,22 @@ class PhotosViewController: UIViewController {
         setupNavigationBar()
         addViews()
         addConstraints()
+        
+        // добавление подписчика
+        imagePublisher.subscribe(self)
+        
+        // запуск сценария наполнения коллекции изображениями, используя метод addImagesWithTimer
+        imagePublisher.addImagesWithTimer(time: 0.5, repeat: 15)
+    }
+    
+    // отмена отписки, а также обнуление библиотеки с изображениями
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+        
+        imagePublisher.removeSubscription(for: self)
+        print("cancelled subscription")
+        imagePublisher.rechargeImageLibrary()
+        print("image library was recharged")
     }
     
     func addViews() {
@@ -64,7 +86,8 @@ class PhotosViewController: UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+//        return 20
+        return photoInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,7 +97,8 @@ extension PhotosViewController: UICollectionViewDataSource {
             return cell
         }
         
-        cell.setup(with: "\(arrayOfImage[indexPath.row])")
+//        cell.setup(with: "\(arrayOfImage[indexPath.row])")
+        cell.setupImagePublisher(image: photoCollection[indexPath.row])
         return cell
     }
     
@@ -84,5 +108,15 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: itemSizeInCollection, height: itemSizeInCollection)
+    }
+}
+
+// реализация метода ImageLibrarySubscriber
+extension PhotosViewController {
+    func receive(images: [UIImage]) {
+        
+        photoCollection = images
+        photoInSection = images.count
+        collectionView.reloadData()
     }
 }

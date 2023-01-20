@@ -51,6 +51,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.textColor = .black
+        textField.text = "mafia"
         //        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.font = .systemFont(ofSize: 16)
@@ -58,6 +59,8 @@ class LogInViewController: UIViewController {
         textField.leftViewMode = .always
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         return textField
     }()
     
@@ -73,6 +76,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.textColor = .black
+        textField.text = "pass"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         
         textField.font = .systemFont(ofSize: 16)
