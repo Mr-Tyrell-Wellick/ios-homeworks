@@ -44,8 +44,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    // текст, который будет писаться в статус
+
+    // текстовое поле для ввода текста статуса
     private let statusTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter text here"
