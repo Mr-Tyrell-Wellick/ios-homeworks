@@ -14,6 +14,11 @@ struct PostFeed {
 
 class FeedViewController: UIViewController {
     
+    weak var coordinator: FeedCoordinator?
+    
+    // binding во ViewController
+    var viewModel = FeedViewModel()
+    
     //    создание  по заданию
     var postTitle: PostFeed = PostFeed(title: "Post Title")
     
@@ -48,10 +53,15 @@ class FeedViewController: UIViewController {
         return button
     }()
     
-    // создание кнопки, которая выводит результат - true/false
-    private var resultButton: CustomButton = {
-        let button = CustomButton(title: "Check", backgroundColor: .systemPink)
-        return button
+    // создание лейбла, которая выводит результат - true/false
+    private var resultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Hello"
+        label.font = UIFont(name: "systemFont", size: 18.0)
+        label.layer.cornerRadius = 7
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+        
     }()
     
     // создаем стеквью
@@ -77,38 +87,48 @@ class FeedViewController: UIViewController {
         addView()
         addTargetAction()
         setConstraint()
+        bindViewModel()
+        navigationController?.tabBarItem = TabBarItems.items[0]
     }
     
     func addView() {
         // объединение кнопок в stackView
-        //        stackViewButton.addArrangedSubview(button)
         stackViewButton.addArrangedSubview(buttonOne)
         stackViewButton.addArrangedSubview(buttonTwo)
         stackViewButton.addArrangedSubview(textField)
         stackViewButton.addArrangedSubview(checkButton)
-        stackViewButton.addArrangedSubview(resultButton)
+        stackViewButton.addArrangedSubview(resultLabel)
         
+    }
+    // binding
+    func bindViewModel() {
+        viewModel.statusText.bind({ (statusText) in
+            DispatchQueue.main.async {
+                self.resultLabel.text = statusText
+            }
+        })
+    }
+    
+    private func checkPassword() {
+        if viewModel.checkPass(word: textField.text ?? "") == true {
+            print("True")
+            self.resultLabel.backgroundColor = .systemGreen
+        } else {
+            print("False")
+            self.resultLabel.backgroundColor = .systemRed
+        }
     }
     
     func addTargetAction() {
         buttonOne.buttonAction = {
-            let detailController = PostViewController()
-            detailController.titlePost = self.postTitle.title
-            self.navigationController?.pushViewController(detailController, animated: false)
+            self.coordinator?.showPostScreen(title: self.postTitle.title)
         }
         buttonTwo.buttonAction = buttonOne.buttonAction //приравниваем вторую кнопку к первой (все действия идентичны с переходом на PostViewController)
         
         // button проверки пароля
         checkButton.buttonAction = {
-            let inputWord = self.textField.text ?? ""
-            let result: Bool = FeedModel().check(word: inputWord)
-            if result == true {
-                self.resultButton.backgroundColor = .systemGreen
-                self.resultButton.setTitle("True", for: .normal)
-            } else {
-                self.resultButton.backgroundColor = .systemRed
-                self.resultButton.setTitle("False", for: .normal)
-            }
+            self.checkPassword()
+            
         }
     }
     // MARK: - constraints

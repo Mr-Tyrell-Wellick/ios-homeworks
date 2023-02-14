@@ -11,11 +11,20 @@ import UIKit
 
 class LogInViewController: UIViewController {
  
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        tabBarItem = TabBarItems.items[1]
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     // MARK: - Properties
- 
+    weak var coordinator: LoginCoordinator?
+    
     // создаем свойство loginDelegate c типом LoginViewControllerDelegate, который будет проверять значения, введенные в текстовые поля контроллера (login and password)
     var loginDelegate: LoginViewControllerDelegate?
-    
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -59,8 +68,6 @@ class LogInViewController: UIViewController {
         textField.leftViewMode = .always
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         return textField
     }()
     
@@ -113,7 +120,6 @@ class LogInViewController: UIViewController {
         
         addView()
         addConstraints()
-        
     }
     
     // MARK: - добавление view
@@ -254,4 +260,3 @@ class LogInViewController: UIViewController {
         ])
     }
 }
-

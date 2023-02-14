@@ -11,6 +11,8 @@ import UIKit
 
 class PostViewController: UIViewController {
     
+    weak var coordinator: PostCoordinator?
+    
     // создаем переменную для текста заголовка, куда будет передаваться заголовок из FeedViewController
     var titlePost: String = ""
     
@@ -36,11 +38,15 @@ class PostViewController: UIViewController {
         navigationItem.rightBarButtonItems = [modalItem]
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        coordinator?.postDidClose()
+    }
+    
     // функция обработки нажатия на кнопку
     @objc func showModal() {
         let popUpViewController = InfoViewController()
         popUpViewController.modalPresentationStyle = .fullScreen
         self.present(popUpViewController, animated: true, completion: nil)
-        
     }
 }

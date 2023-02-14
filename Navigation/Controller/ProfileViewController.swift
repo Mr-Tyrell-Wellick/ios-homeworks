@@ -11,8 +11,10 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
-    // добавление свойства типа User и длеаем отображение информации на экране профиля, включая изображение аватара
+    weak var coordinator: ProfileCoordinator?
     
+    
+    // добавление свойства типа User и длеаем отображение информации на экране профиля, включая изображение аватара
     var user_1: User = User(userName: "", avatar: UIImage(), status: "")
     
     
@@ -73,17 +75,16 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         // Версию Release оставляем без изменений. В версии Debug изменяем цвет фона
-        #if DEBUG
+#if DEBUG
         view.backgroundColor = .blue
-        #else
+#else
         view.backgroundColor = UIColor(red: 245/255.0, green: 248/255.0, blue: 250/255.0, alpha: 1)
-        #endif
+#endif
         
         addViews()
         addConstraints()
         addGestures()
         addNotification()
-        
     }
     
     func addViews() {
@@ -279,4 +280,3 @@ extension ProfileViewController: UITableViewDataSource {
         }
     }
 }
-
