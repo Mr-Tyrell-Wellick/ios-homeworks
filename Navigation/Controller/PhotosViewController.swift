@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import iOSIntPackage
 
-class PhotosViewController: UIViewController, ImageLibrarySubscriber {
+class PhotosViewController: UIViewController {
+    
+    var filteredImage: [CGImage?] = []
     
     // создание экземпляра класса ImagePublisherFacade
-    var imagePublisher = ImagePublisherFacade()
+    //    var imagePublisher = ImagePublisherFacade()
     
     //MARK: - Properties
     
@@ -42,24 +44,25 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         setupNavigationBar()
         addViews()
         addConstraints()
+        processedImage()
         
         // добавление подписчика
-        imagePublisher.subscribe(self)
+        //        imagePublisher.subscribe(self)
         
         // запуск сценария наполнения коллекции изображениями, используя метод addImagesWithTimer
-        imagePublisher.addImagesWithTimer(time: 0.5, repeat: 15)
+        //        imagePublisher.addImagesWithTimer(time: 0.5, repeat: 15)
     }
     
-    // отмена отписки, а также обнуление библиотеки с изображениями
-    override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-        
-        imagePublisher.removeSubscription(for: self)
-        print("cancelled subscription")
-        imagePublisher.rechargeImageLibrary()
-        print("image library was recharged")
-    }
-    
+    //    // отмена отписки, а также обнуление библиотеки с изображениями
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //            super.viewWillAppear(animated)
+    //
+    //        imagePublisher.removeSubscription(for: self)
+    //        print("cancelled subscription")
+    //        imagePublisher.rechargeImageLibrary()
+    //        print("image library was recharged")
+    //    }
+    //
     func addViews() {
         view.addSubview(collectionView)
     }
@@ -69,6 +72,29 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         self.navigationItem.title = "Photo Gallery"
         
     }
+    
+    func processedImage() {
+        print(DispatchTime.now())
+        
+        ImageProcessor.init().processImagesOnThread(sourceImages: threadArrayOfImage, filter: .noir, qos: .default)
+        { image in
+            self.filteredImage = image
+            self.resultOfProcessing()
+            print(DispatchTime.now())
+        }
+    }
+    
+    func resultOfProcessing() {
+        
+        for (index, item) in filteredImage.enumerated() {
+            threadArrayOfImage[index] = UIImage.init(cgImage: item!)
+        }
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     
     //MARK: - Constraints
     
@@ -87,7 +113,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return 20
-        return photoInSection
+        return threadArrayOfImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,7 +124,8 @@ extension PhotosViewController: UICollectionViewDataSource {
         }
         
 //        cell.setup(with: "\(arrayOfImage[indexPath.row])")
-        cell.setupImagePublisher(image: photoCollection[indexPath.row])
+//        cell.setupImagePublisher(image: photoCollection[indexPath.row])
+        cell.setupWithIndex(with: indexPath.row)
         return cell
     }
     
@@ -108,15 +135,5 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: itemSizeInCollection, height: itemSizeInCollection)
-    }
-}
-
-// реализация метода ImageLibrarySubscriber
-extension PhotosViewController {
-    func receive(images: [UIImage]) {
-        
-        photoCollection = images
-        photoInSection = images.count
-        collectionView.reloadData()
     }
 }

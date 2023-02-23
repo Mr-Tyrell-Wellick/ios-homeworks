@@ -40,6 +40,11 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         self.image.image = image
     }
     
+    func setupWithIndex(with index: Int) {
+        self.image.image = threadArrayOfImage[index]
+    }
+    
+    
     //MARK: - Constraints
     
     private func setupView() {
