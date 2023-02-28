@@ -13,6 +13,8 @@ class PhotosViewController: UIViewController {
     
     var filteredImage: [CGImage?] = []
     
+    let startDate = Date()
+    
     // создание экземпляра класса ImagePublisherFacade
     //    var imagePublisher = ImagePublisherFacade()
     
@@ -74,27 +76,18 @@ class PhotosViewController: UIViewController {
     }
     
     func processedImage() {
-        print(DispatchTime.now())
         
-        ImageProcessor.init().processImagesOnThread(sourceImages: threadArrayOfImage, filter: .noir, qos: .default)
-        { image in
-            self.filteredImage = image
-            self.resultOfProcessing()
-            print(DispatchTime.now())
+        ImageProcessor().processImagesOnThread(sourceImages: threadArrayOfImage, filter: .noir, qos: .default) { [weak self] filteredImage in
+            guard let self else { return }
+            threadArrayOfImage = filteredImage
+                .compactMap { $0 }
+                .map { UIImage(cgImage: $0) }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            print("Process time:  \(Date().timeIntervalSince(self.startDate)) seconds")
         }
     }
-    
-    func resultOfProcessing() {
-        
-        for (index, item) in filteredImage.enumerated() {
-            threadArrayOfImage[index] = UIImage.init(cgImage: item!)
-        }
-        
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
     
     //MARK: - Constraints
     

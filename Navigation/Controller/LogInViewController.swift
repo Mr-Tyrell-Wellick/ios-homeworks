@@ -45,7 +45,28 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-    // создание кнопки для ввода email or phone
+    // создание кнопки для генерации пароля
+    private let generatePasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("generate password", for: .normal)
+        button.setTitleColor(UIColor.gray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //target на кнопку
+        button.addTarget(self, action: #selector(generatePassword), for: .touchUpInside)
+        return button
+    }()
+    
+    // индикатор активности
+    private lazy var indicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .black
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
+    // создание текстового поля для ввода email or phone
     
     private let logInTextField: UITextField = {
         let textField = UITextField()
@@ -59,8 +80,6 @@ class LogInViewController: UIViewController {
         textField.leftViewMode = .always
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         return textField
     }()
     
@@ -71,14 +90,14 @@ class LogInViewController: UIViewController {
         return line
     }()
     
-    // создание кнопки для ввода password
+    // создание текстового поля для ввода password
     private let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.textColor = .black
         textField.text = "pass"
         textField.layer.borderColor = UIColor.lightGray.cgColor
-        
+
         textField.font = .systemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftViewMode = .always
@@ -89,7 +108,6 @@ class LogInViewController: UIViewController {
     }()
     
     // stackView для полей ввода данных
-    
     private let stackViewTextField: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -127,6 +145,8 @@ class LogInViewController: UIViewController {
         
         scrollView.addSubview(stackViewTextField)
         scrollView.addSubview(logInbutton)
+        scrollView.addSubview(generatePasswordButton)
+        scrollView.addSubview(indicator)
         
         // создаем action для alert'a
         alertController.addAction(UIAlertAction(title: "Попробовать снова", style: .default))
@@ -159,6 +179,46 @@ class LogInViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    // нажатие на button для генерации password
+    @objc func generatePassword() {
+        self.generatePasswordButton.isHidden = true
+        self.indicator.startAnimating()
+        self.passwordTextField.text = ""
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: "Generating:",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
+        )
+        
+        var password: String {
+            let symbols = String().letters
+            
+            return String((0..<4).map{ _ in symbols.randomElement()! })
+        }
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            BruteForce.bruteForce(passwordToUnlock: password)
+            
+            DispatchQueue.main.async {
+                self.indicator.stopAnimating()
+                self.generatePasswordButton.isHidden = false
+                self.passwordTextField.text = password
+                self.passwordTextField.isSecureTextEntry = false
+                self.passwordTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Password",
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - KEYBOARD (вся работа с клавиатурой)
     
@@ -209,6 +269,7 @@ class LogInViewController: UIViewController {
     
     @objc private func didHideKeyboard(_ notification: Notification) {
         self.forcedHidingKeyboard()
+        print("Hide keyboard")
     }
     
     @objc private func forcedHidingKeyboard() {
@@ -251,6 +312,14 @@ class LogInViewController: UIViewController {
             logInbutton.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
             logInbutton.heightAnchor.constraint(equalToConstant: 50),
             logInbutton.leftAnchor.constraint(equalTo: super.view.leftAnchor, constant: 16),
+            
+            generatePasswordButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
+            generatePasswordButton.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor, constant: -16),
+            generatePasswordButton.widthAnchor.constraint(equalToConstant: 100),
+            generatePasswordButton.heightAnchor.constraint(equalToConstant: 40),
+
+            indicator.centerXAnchor.constraint(equalTo: passwordTextField.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
         ])
     }
 }

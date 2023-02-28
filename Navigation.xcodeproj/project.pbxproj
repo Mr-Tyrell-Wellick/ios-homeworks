@@ -24,6 +24,7 @@
 		F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */; };
 		F77F3801298471940049B6FC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F3800298471940049B6FC /* CustomButton.swift */; };
 		F77F380329869FF20049B6FC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F380229869FF20049B6FC /* FeedModel.swift */; };
+		F79A986229ADF145009F9F03 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A986129ADF145009F9F03 /* BruteForce.swift */; };
 		F7B9B5272905911300C262F5 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B5262905911300C262F5 /* PhotosTableViewCell.swift */; };
 		F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */; };
 		F7B9B52C2907F83200C262F5 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52B2907F83200C262F5 /* PhotoModel.swift */; };
@@ -75,6 +76,7 @@
 		F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModels.swift; sourceTree = "<group>"; };
 		F77F3800298471940049B6FC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F77F380229869FF20049B6FC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		F79A986129ADF145009F9F03 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		F7B9B5262905911300C262F5 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7B9B52B2907F83200C262F5 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				F71F5CD82965C037000EFE32 /* UserModel.swift */,
 				F77F380229869FF20049B6FC /* FeedModel.swift */,
 				F7D555C22970AC2600E5DCBF /* Checker.swift */,
+				F79A986129ADF145009F9F03 /* BruteForce.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			files = (
 				F7B9B5272905911300C262F5 /* PhotosTableViewCell.swift in Sources */,
 				F77F380329869FF20049B6FC /* FeedModel.swift in Sources */,
+				F79A986229ADF145009F9F03 /* BruteForce.swift in Sources */,
 				F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */,
 				F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */,
 				F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */,
