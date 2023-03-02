@@ -13,6 +13,14 @@ class PhotosViewController: UIViewController {
     
     var filteredImage: [CGImage?] = []
     
+    let startDate = Date()
+    
+    //свойство сколько раз "бегает" таймер
+    var runCount = 0
+    // создание массива с фильтрами
+    let photoFilters: [ColorFilter] = [.chrome, .motionBlur(radius: 5), .colorInvert, .noir]
+    
+    
     // создание экземпляра класса ImagePublisherFacade
     //    var imagePublisher = ImagePublisherFacade()
     
@@ -44,14 +52,14 @@ class PhotosViewController: UIViewController {
         setupNavigationBar()
         addViews()
         addConstraints()
-        processedImage()
-        
+        start()
+    }
         // добавление подписчика
         //        imagePublisher.subscribe(self)
         
         // запуск сценария наполнения коллекции изображениями, используя метод addImagesWithTimer
         //        imagePublisher.addImagesWithTimer(time: 0.5, repeat: 15)
-    }
+    
     
     //    // отмена отписки, а также обнуление библиотеки с изображениями
     //    override func viewWillDisappear(_ animated: Bool) {
@@ -73,28 +81,32 @@ class PhotosViewController: UIViewController {
         
     }
     
-    func processedImage() {
-        print(DispatchTime.now())
+    func processedImage(_ filter: ColorFilter) {
         
-        ImageProcessor.init().processImagesOnThread(sourceImages: threadArrayOfImage, filter: .noir, qos: .default)
-        { image in
-            self.filteredImage = image
-            self.resultOfProcessing()
-            print(DispatchTime.now())
+        ImageProcessor().processImagesOnThread(sourceImages: threadArrayOfImage, filter: filter, qos: .default) { [weak self] filteredImage in
+            guard let self else { return }
+            threadArrayOfImage = filteredImage
+                .compactMap { $0 }
+                .map { UIImage(cgImage: $0) }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            print("Process time:  \(Date().timeIntervalSince(self.startDate)) seconds")
         }
     }
     
-    func resultOfProcessing() {
-        
-        for (index, item) in filteredImage.enumerated() {
-            threadArrayOfImage[index] = UIImage.init(cgImage: item!)
-        }
-        
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        //запуск таймера
+    func start() {
+        Timer.scheduledTimer(withTimeInterval: 1.0,
+                             repeats: true) { timer in
+            
+            self.processedImage(self.photoFilters[Int.random(in: 0..<self.photoFilters.count-1)])
+            self.runCount += 1
+            if self.runCount == 10 {
+                timer.invalidate()
+            }
         }
     }
-    
     
     //MARK: - Constraints
     
