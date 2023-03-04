@@ -44,7 +44,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     // текстовое поле для ввода текста статуса
     private let statusTextField: UITextField = {
         let textField = UITextField()
@@ -111,22 +111,45 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(statusTextField)
         addSubview(setStatusButton)
     }
-    
+
     @objc func buttonPressed() {
-        if let text = statusLabel.text {
-            print(text)
-        }
-        if statusText != "" {
-            statusLabel.text = statusText
+        do {
+            try newStatus()
+        } catch StatusError.emptyStatus {
+            statusAlert(message: "Сannot change the status, because there is no text in the input field")
+            
+        } catch StatusError.longStatus {
+            statusAlert(message: "Status text is too long. \nMaximum number of characters allowed: 30")
+            
+        } catch {
+            statusAlert(message: "Unexpected error")
         }
     }
+    
+    func newStatus() throws {
+        
+        guard statusText != "" else {
+            throw StatusError.emptyStatus
+        }
+        guard statusText.count < 30 else {
+            throw StatusError.longStatus
+        }
+        statusLabel.text = statusText
+        
+    }
+    //alert and action для кнопки статуса (упакуем ее в функцию)
+            func statusAlert(message: String) {
+                let alertStatus = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default)
+                alertStatus.addAction(action)
+                UIApplication.topViewController()!.present(alertStatus, animated: true, completion: nil)
+            }
     
     @objc func changeStatusText() {
         if let text = statusTextField.text {
             statusText = text
         }
     }
-    
     
     // MARK: - Constraints
     

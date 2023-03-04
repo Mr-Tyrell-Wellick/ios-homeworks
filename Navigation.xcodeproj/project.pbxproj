@@ -14,6 +14,7 @@
 		F71D77AA28C8A17400F9412A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D77A828C8A17400F9412A /* LaunchScreen.storyboard */; };
 		F71F5CD92965C037000EFE32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71F5CD82965C037000EFE32 /* UserModel.swift */; };
 		F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727DD7B28CFC4130027D6BE /* PostViewController.swift */; };
+		F735BEE829B36CAB00B9F5B9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F735BEE729B36CAB00B9F5B9 /* Error.swift */; };
 		F74B72FD28CCAB3A00D10E21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */; };
 		F75063B12979A76500E36431 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F75063B02979A76500E36431 /* iOSIntPackage */; };
 		F7553B792950940400B1B4FE /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = F7553B782950940400B1B4FE /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +69,7 @@
 		F71D77AB28C8A17400F9412A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F71F5CD82965C037000EFE32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F727DD7B28CFC4130027D6BE /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		F735BEE729B36CAB00B9F5B9 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F7553B762950940400B1B4FE /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7553B782950940400B1B4FE /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				F71F5CD82965C037000EFE32 /* UserModel.swift */,
 				F77F380229869FF20049B6FC /* FeedModel.swift */,
 				F7D555C22970AC2600E5DCBF /* Checker.swift */,
+				F735BEE729B36CAB00B9F5B9 /* Error.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				F7FA218128FEBFDE00B6638A /* PostTableViewCell.swift in Sources */,
 				F71D77A028C8A17300F9412A /* SceneDelegate.swift in Sources */,
 				F712391528D4939500AB10E4 /* ProfileHeaderView.swift in Sources */,
+				F735BEE829B36CAB00B9F5B9 /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
