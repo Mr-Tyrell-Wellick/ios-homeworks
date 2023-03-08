@@ -23,38 +23,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         //         MARK: - 2
-        // создаем два UINavigationController'a, отвечающие за ленту и профиль
+        // создаем UINavigationController'ы, отвечающие за ленту, логин, профиль и плеер
         var userInterfaceLayout = UINavigationController()
         var profileInterfaceLayout = UINavigationController()
         var loginTabNavigationController = UINavigationController()
+        var playerTabNavigationController = UINavigationController()
         
         //         MARK: - 3
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
         userInterfaceLayout = UINavigationController.init(rootViewController: FeedViewController())
         profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileViewController())
+        playerTabNavigationController = UINavigationController.init(rootViewController: TrackListController())
         
-/*
-        /// Внедряем зависимость контроллера LoginViewController от LoginInspector
-    let loginVC = LogInViewController()
-        loginVC.loginDelegate = LoginInspector()
-        loginTabNavigationController = UINavigationController.init(rootViewController: loginVC)
- */
+        /*
+         /// Внедряем зависимость контроллера LoginViewController от LoginInspector
+         let loginVC = LogInViewController()
+         loginVC.loginDelegate = LoginInspector()
+         loginTabNavigationController = UINavigationController.init(rootViewController: loginVC)
+         */
         // Внедряем зависимость контроллера LoginViewController от MyLoginFactory
         let loginVC = LogInViewController()
         loginVC.loginDelegate = MyLoginFactory().makeLoginInspector()
         loginTabNavigationController = UINavigationController.init(rootViewController: loginVC)
         
-
+        
         //         MARK: - 4
-        // Заполняем  2 контейнера с контроллерами таббара нашими навигационными контроллерами
+        // Заполняем  3 контейнера с контроллерами таббара нашими навигационными контроллерами
         //        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
-        tabBarController.viewControllers = [userInterfaceLayout, loginTabNavigationController]
+        tabBarController.viewControllers = [userInterfaceLayout, playerTabNavigationController, loginTabNavigationController]
         
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
         
         let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
-        let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
+        let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.circle"), tag: 1)
         
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
@@ -62,6 +65,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         userInterfaceLayout.tabBarItem = item1
         profileInterfaceLayout.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item2
+        playerTabNavigationController.tabBarItem = item3
+        
         
         //         MARK: - 7
         // Обращаемся к методу, который позволяет кастомизировать TabBar под себя
@@ -76,8 +81,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
     }
-  
-        //MARK: - Others
+    
+    //MARK: - Others
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -105,6 +110,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-    
-    
 }

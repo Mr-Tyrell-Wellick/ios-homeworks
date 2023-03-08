@@ -8,14 +8,12 @@
 import Foundation
 import UIKit
 
-
 class LogInViewController: UIViewController {
- 
+    
     // MARK: - Properties
- 
+    
     // создаем свойство loginDelegate c типом LoginViewControllerDelegate, который будет проверять значения, введенные в текстовые поля контроллера (login and password)
     var loginDelegate: LoginViewControllerDelegate?
-    
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -46,21 +44,17 @@ class LogInViewController: UIViewController {
     }()
     
     // создание кнопки для ввода email or phone
-    
     private let logInTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.textColor = .black
         textField.text = "mafia"
-        //        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.font = .systemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         return textField
     }()
     
@@ -78,7 +72,6 @@ class LogInViewController: UIViewController {
         textField.textColor = .black
         textField.text = "pass"
         textField.layer.borderColor = UIColor.lightGray.cgColor
-        
         textField.font = .systemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftViewMode = .always
@@ -89,7 +82,6 @@ class LogInViewController: UIViewController {
     }()
     
     // stackView для полей ввода данных
-    
     private let stackViewTextField: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -113,7 +105,6 @@ class LogInViewController: UIViewController {
         
         addView()
         addConstraints()
-        
     }
     
     // MARK: - добавление view
@@ -135,7 +126,7 @@ class LogInViewController: UIViewController {
     
     // создаем alert в случае неверного ввода логина
     let alertController = UIAlertController(title: "Ошибка ввода", message: "Логин введен неверно", preferredStyle: .alert)
-   
+    
     //функция нажатия на клавишу Log In открывает ProfileView (p.s. внесены изменения. Согласно заданию, если debug - версия, то отображается один контент, если release - версия, то другой контент)
     @objc func showProfileView() {
         

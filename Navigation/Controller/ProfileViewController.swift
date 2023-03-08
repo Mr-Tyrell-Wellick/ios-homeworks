@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController {
     
     var user_1: User = User(userName: "", avatar: UIImage(), status: "")
     
-    
     // MARK: - Properties
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -55,7 +54,6 @@ class ProfileViewController: UIViewController {
     }()
     
     // Х для закрытия окна, реализованная через Image
-    
     private lazy var hiddenCloseView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "xmark.square.fill")
@@ -73,11 +71,11 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         // Версию Release оставляем без изменений. В версии Debug изменяем цвет фона
-        #if DEBUG
+#if DEBUG
         view.backgroundColor = .blue
-        #else
+#else
         view.backgroundColor = UIColor(red: 245/255.0, green: 248/255.0, blue: 250/255.0, alpha: 1)
-        #endif
+#endif
         
         addViews()
         addConstraints()
@@ -204,18 +202,64 @@ class ProfileViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let profile = ProfileHeaderView()
             profile.setupStatus(user: user_1)
+            profile.delegate = self
             return profile
         }
         return nil
     }
 }
 
+// MARK: - ProfileHeaderDelegate
+
+extension ProfileViewController: ProfileHeaderDelegate {
+    
+    func didSetStatus(_ value: String) {
+        setStatus(value)
+    }
+    
+    private func setStatus(_ status: String) {
+        do {
+            try checkStatus(status)
+        } catch StatusError.emptyStatus {
+            statusAlert(message: "Сannot change the status, because there is no text in the input field")
+        } catch StatusError.longStatus {
+            statusAlert(message: "Status text is too long. \nMaximum number of characters allowed: 30")
+        } catch {
+            statusAlert(message: "Unexpected error")
+        }
+        // выставляем данные в модель(из нее данные берет хедер)
+        user_1.status = status
+        // перерисовываем секцию 0(секция хедера)
+        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .none)
+    }
+    
+    private func checkStatus(_ status: String) throws {
+        guard status != "" else {
+            throw StatusError.emptyStatus
+        }
+        guard status.count < 30 else {
+            throw StatusError.longStatus
+        }
+    }
+    
+    //alert and action для кнопки статуса (упакуем ее в функцию)
+    private func statusAlert(message: String) {
+        let alertStatus = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alertStatus.addAction(action)
+        present(alertStatus, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     
     // количество секций (изменили на 2 после того, как появилась лента с фото)
@@ -279,4 +323,3 @@ extension ProfileViewController: UITableViewDataSource {
         }
     }
 }
-

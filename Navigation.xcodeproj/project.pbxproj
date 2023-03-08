@@ -15,6 +15,10 @@
 		F71F5CD92965C037000EFE32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71F5CD82965C037000EFE32 /* UserModel.swift */; };
 		F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727DD7B28CFC4130027D6BE /* PostViewController.swift */; };
 		F735BEE829B36CAB00B9F5B9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F735BEE729B36CAB00B9F5B9 /* Error.swift */; };
+		F73B5A1729B6254E00557D42 /* TrackListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1629B6254E00557D42 /* TrackListController.swift */; };
+		F73B5A1929B62C1400557D42 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1829B62C1400557D42 /* TrackModel.swift */; };
+		F73B5A1B29B74DE800557D42 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1A29B74DE800557D42 /* PlayerController.swift */; };
+		F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1C29B7585A00557D42 /* PlayerButton.swift */; };
 		F74B72FD28CCAB3A00D10E21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */; };
 		F75063B12979A76500E36431 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F75063B02979A76500E36431 /* iOSIntPackage */; };
 		F7553B792950940400B1B4FE /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = F7553B782950940400B1B4FE /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +33,13 @@
 		F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */; };
 		F7B9B52C2907F83200C262F5 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52B2907F83200C262F5 /* PhotoModel.swift */; };
 		F7B9B52E2908179200C262F5 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52D2908179200C262F5 /* PhotosViewController.swift */; };
+		F7BC095629B794E10046F01A /* Cream Soda - Nikakikh bolshe vecherinok.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7BC095129B794E00046F01A /* Cream Soda - Nikakikh bolshe vecherinok.mp3 */; };
+		F7BC095729B794E10046F01A /* Kendrick Lamar - Swimming Pools.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7BC095229B794E10046F01A /* Kendrick Lamar - Swimming Pools.mp3 */; };
+		F7BC095829B794E10046F01A /* ScHoolboy Q - Hell Of A Night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7BC095329B794E10046F01A /* ScHoolboy Q - Hell Of A Night.mp3 */; };
+		F7BC095929B794E10046F01A /* Tesla Boy - Progulka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7BC095429B794E10046F01A /* Tesla Boy - Progulka.mp3 */; };
+		F7BC095A29B794E10046F01A /* Hurts - Somebody to Die For.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F7BC095529B794E10046F01A /* Hurts - Somebody to Die For.mp3 */; };
+		F7BC095C29B7C1720046F01A /* TrackListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC095B29B7C1720046F01A /* TrackListViewCell.swift */; };
+		F7BC095F29B8C61F0046F01A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = F7BC095E29B8C61F0046F01A /* TinyConstraints */; };
 		F7BD9AA128D0B35900EC85CD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD9AA028D0B35900EC85CD /* InfoViewController.swift */; };
 		F7D555C32970AC2600E5DCBF /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D555C22970AC2600E5DCBF /* Checker.swift */; };
 		F7FA218128FEBFDE00B6638A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA218028FEBFDE00B6638A /* PostTableViewCell.swift */; };
@@ -70,6 +81,10 @@
 		F71F5CD82965C037000EFE32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F727DD7B28CFC4130027D6BE /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F735BEE729B36CAB00B9F5B9 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		F73B5A1629B6254E00557D42 /* TrackListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListController.swift; sourceTree = "<group>"; };
+		F73B5A1829B62C1400557D42 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		F73B5A1A29B74DE800557D42 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		F73B5A1C29B7585A00557D42 /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F7553B762950940400B1B4FE /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7553B782950940400B1B4FE /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -81,6 +96,12 @@
 		F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7B9B52B2907F83200C262F5 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		F7B9B52D2908179200C262F5 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		F7BC095129B794E00046F01A /* Cream Soda - Nikakikh bolshe vecherinok.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cream Soda - Nikakikh bolshe vecherinok.mp3"; sourceTree = "<group>"; };
+		F7BC095229B794E10046F01A /* Kendrick Lamar - Swimming Pools.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Kendrick Lamar - Swimming Pools.mp3"; sourceTree = "<group>"; };
+		F7BC095329B794E10046F01A /* ScHoolboy Q - Hell Of A Night.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ScHoolboy Q - Hell Of A Night.mp3"; sourceTree = "<group>"; };
+		F7BC095429B794E10046F01A /* Tesla Boy - Progulka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tesla Boy - Progulka.mp3"; sourceTree = "<group>"; };
+		F7BC095529B794E10046F01A /* Hurts - Somebody to Die For.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hurts - Somebody to Die For.mp3"; sourceTree = "<group>"; };
+		F7BC095B29B7C1720046F01A /* TrackListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewCell.swift; sourceTree = "<group>"; };
 		F7BD9AA028D0B35900EC85CD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		F7D555C22970AC2600E5DCBF /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		F7FA218028FEBFDE00B6638A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +116,7 @@
 			files = (
 				F7553B7C2950940400B1B4FE /* StorageService.framework in Frameworks */,
 				F75063B12979A76500E36431 /* iOSIntPackage in Frameworks */,
+				F7BC095F29B8C61F0046F01A /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +164,7 @@
 		F71D779C28C8A17300F9412A /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F7BC094F29B794750046F01A /* AudioPlayer */,
 				F74B72FB28CA29C200D10E21 /* Application layer */,
 				F7B9B52A2907F68800C262F5 /* Model */,
 				F7FA218228FEE36E00B6638A /* View */,
@@ -180,8 +203,31 @@
 				F77F380229869FF20049B6FC /* FeedModel.swift */,
 				F7D555C22970AC2600E5DCBF /* Checker.swift */,
 				F735BEE729B36CAB00B9F5B9 /* Error.swift */,
+				F73B5A1829B62C1400557D42 /* TrackModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7BC094F29B794750046F01A /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F73B5A1629B6254E00557D42 /* TrackListController.swift */,
+				F73B5A1A29B74DE800557D42 /* PlayerController.swift */,
+				F7BC095029B794950046F01A /* Track */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		F7BC095029B794950046F01A /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC095129B794E00046F01A /* Cream Soda - Nikakikh bolshe vecherinok.mp3 */,
+				F7BC095529B794E10046F01A /* Hurts - Somebody to Die For.mp3 */,
+				F7BC095229B794E10046F01A /* Kendrick Lamar - Swimming Pools.mp3 */,
+				F7BC095329B794E10046F01A /* ScHoolboy Q - Hell Of A Night.mp3 */,
+				F7BC095429B794E10046F01A /* Tesla Boy - Progulka.mp3 */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		F7FA218228FEE36E00B6638A /* View */ = {
@@ -189,9 +235,11 @@
 			children = (
 				F712391428D4939500AB10E4 /* ProfileHeaderView.swift */,
 				F7FA218028FEBFDE00B6638A /* PostTableViewCell.swift */,
+				F7BC095B29B7C1720046F01A /* TrackListViewCell.swift */,
 				F7B9B5262905911300C262F5 /* PhotosTableViewCell.swift */,
 				F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */,
 				F77F3800298471940049B6FC /* CustomButton.swift */,
+				F73B5A1C29B7585A00557D42 /* PlayerButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +275,7 @@
 			name = Navigation;
 			packageProductDependencies = (
 				F75063B02979A76500E36431 /* iOSIntPackage */,
+				F7BC095E29B8C61F0046F01A /* TinyConstraints */,
 			);
 			productName = Navigation;
 			productReference = F71D779A28C8A17300F9412A /* Navigation.app */;
@@ -279,6 +328,7 @@
 			mainGroup = F71D779128C8A17300F9412A;
 			packageReferences = (
 				F75063AF2979A76500E36431 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 			);
 			productRefGroup = F71D779B28C8A17300F9412A /* Products */;
 			projectDirPath = "";
@@ -296,6 +346,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71D77AA28C8A17400F9412A /* LaunchScreen.storyboard in Resources */,
+				F7BC095829B794E10046F01A /* ScHoolboy Q - Hell Of A Night.mp3 in Resources */,
+				F7BC095629B794E10046F01A /* Cream Soda - Nikakikh bolshe vecherinok.mp3 in Resources */,
+				F7BC095929B794E10046F01A /* Tesla Boy - Progulka.mp3 in Resources */,
+				F7BC095729B794E10046F01A /* Kendrick Lamar - Swimming Pools.mp3 in Resources */,
+				F7BC095A29B794E10046F01A /* Hurts - Somebody to Die For.mp3 in Resources */,
 				F71D77A728C8A17400F9412A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,9 +371,11 @@
 			files = (
 				F7B9B5272905911300C262F5 /* PhotosTableViewCell.swift in Sources */,
 				F77F380329869FF20049B6FC /* FeedModel.swift in Sources */,
+				F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */,
 				F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */,
 				F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */,
 				F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */,
+				F7BC095C29B7C1720046F01A /* TrackListViewCell.swift in Sources */,
 				F71F5CD92965C037000EFE32 /* UserModel.swift in Sources */,
 				F7B9B52C2907F83200C262F5 /* PhotoModel.swift in Sources */,
 				F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */,
@@ -330,8 +387,11 @@
 				F7FA218C28FF68AC00B6638A /* ProfileViewController.swift in Sources */,
 				F77F3801298471940049B6FC /* CustomButton.swift in Sources */,
 				F7FA218128FEBFDE00B6638A /* PostTableViewCell.swift in Sources */,
+				F73B5A1929B62C1400557D42 /* TrackModel.swift in Sources */,
 				F71D77A028C8A17300F9412A /* SceneDelegate.swift in Sources */,
+				F73B5A1729B6254E00557D42 /* TrackListController.swift in Sources */,
 				F712391528D4939500AB10E4 /* ProfileHeaderView.swift in Sources */,
+				F73B5A1B29B74DE800557D42 /* PlayerController.swift in Sources */,
 				F735BEE829B36CAB00B9F5B9 /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +701,14 @@
 				kind = branch;
 			};
 		};
+		F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -648,6 +716,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F75063AF2979A76500E36431 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		F7BC095E29B8C61F0046F01A /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

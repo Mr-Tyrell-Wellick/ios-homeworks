@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
+// протокол делегата об изменении статуса
+protocol ProfileHeaderDelegate: AnyObject {
+    func didSetStatus (_ value: String)
+}
+
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
     var statusText: String = ""
-    
+    weak var delegate: ProfileHeaderDelegate?
+
     //аватарка
     private let avatarImageView: UIImageView = {
         let image = UIImageView()
@@ -112,38 +118,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(setStatusButton)
     }
 
+    // переделал, используя делегат
     @objc func buttonPressed() {
-        do {
-            try newStatus()
-        } catch StatusError.emptyStatus {
-            statusAlert(message: "Сannot change the status, because there is no text in the input field")
-            
-        } catch StatusError.longStatus {
-            statusAlert(message: "Status text is too long. \nMaximum number of characters allowed: 30")
-            
-        } catch {
-            statusAlert(message: "Unexpected error")
-        }
+        delegate?.didSetStatus(statusText)
+    // остальной блок кода перенесен в ProfileViewController 
+
     }
-    
-    func newStatus() throws {
-        
-        guard statusText != "" else {
-            throw StatusError.emptyStatus
-        }
-        guard statusText.count < 30 else {
-            throw StatusError.longStatus
-        }
-        statusLabel.text = statusText
-        
-    }
-    //alert and action для кнопки статуса (упакуем ее в функцию)
-            func statusAlert(message: String) {
-                let alertStatus = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default)
-                alertStatus.addAction(action)
-                UIApplication.topViewController()!.present(alertStatus, animated: true, completion: nil)
-            }
     
     @objc func changeStatusText() {
         if let text = statusTextField.text {
