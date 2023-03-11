@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F706211329BD044E000A55CD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F706211229BD044E000A55CD /* NetworkService.swift */; };
 		F712391528D4939500AB10E4 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712391428D4939500AB10E4 /* ProfileHeaderView.swift */; };
 		F71D779E28C8A17300F9412A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D779D28C8A17300F9412A /* AppDelegate.swift */; };
 		F71D77A028C8A17300F9412A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D779F28C8A17300F9412A /* SceneDelegate.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F706211229BD044E000A55CD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F712391428D4939500AB10E4 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		F71D779A28C8A17300F9412A /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D779D28C8A17300F9412A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F706211129BD0433000A55CD /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F706211229BD044E000A55CD /* NetworkService.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
 		F712391628D4939B00AB10E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +174,9 @@
 		F71D779C28C8A17300F9412A /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F706211129BD0433000A55CD /* ServiceLayer */,
 				F7BC094F29B794750046F01A /* AudioPlayer */,
-				F74B72FB28CA29C200D10E21 /* Application layer */,
+				F74B72FB28CA29C200D10E21 /* ApplicationLayer */,
 				F7B9B52A2907F68800C262F5 /* Model */,
 				F7FA218228FEE36E00B6638A /* View */,
 				F712391628D4939B00AB10E4 /* Controller */,
@@ -176,13 +187,13 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		F74B72FB28CA29C200D10E21 /* Application layer */ = {
+		F74B72FB28CA29C200D10E21 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				F71D779D28C8A17300F9412A /* AppDelegate.swift */,
 				F71D779F28C8A17300F9412A /* SceneDelegate.swift */,
 			);
-			path = "Application layer";
+			path = ApplicationLayer;
 			sourceTree = "<group>";
 		};
 		F7553B772950940400B1B4FE /* StorageService */ = {
@@ -374,6 +385,7 @@
 				F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */,
 				F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */,
 				F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */,
+				F706211329BD044E000A55CD /* NetworkService.swift in Sources */,
 				F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */,
 				F7BC095C29B7C1720046F01A /* TrackListViewCell.swift in Sources */,
 				F71F5CD92965C037000EFE32 /* UserModel.swift in Sources */,

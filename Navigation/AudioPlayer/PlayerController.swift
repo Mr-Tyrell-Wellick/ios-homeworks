@@ -141,6 +141,15 @@ final class PlayerController: UIViewController {
         return stackView
     }()
     
+    // создать полоску в плеере
+    private lazy var strip: UIView = {
+       let strip = UIView()
+        strip.backgroundColor = .white
+        strip.layer.cornerRadius = 2
+        strip.translatesAutoresizingMaskIntoConstraints = false
+        return strip
+    }()
+    
     // MARK: - Methods
     
     override func viewDidLoad() {
@@ -167,6 +176,8 @@ final class PlayerController: UIViewController {
         view.addSubview(elapsedTimeValueLabel)
         view.addSubview(remainingTimeValueLabel)
         view.addSubview(soundStack)
+        
+        view.addSubview(strip)
         
         buttonStack.addArrangedSubview(backwardTrackButton)
         buttonStack.addArrangedSubview(playAndPauseButton)
@@ -229,15 +240,22 @@ final class PlayerController: UIViewController {
             if trackPosition + 1 < TrackModel.tracks.count {
                 trackPosition += 1
                 setupPlayer()
+                player.play()
                 playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             }
+            
+            if trackPosition == 0 {
+                nextTrackButton.isEnabled = false
+            }
         }
-        
+            
         backwardTrackButton.buttonAction = { [self] in
             if trackPosition != 0 {
                 trackPosition -= 1
                 setupPlayer()
+                player.play()
                 playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                nextTrackButton.isEnabled = true
             }
         }
         
@@ -282,13 +300,20 @@ final class PlayerController: UIViewController {
         guard let minString = timeFormatter.string(from: NSNumber(value: mins)), let secString = timeFormatter.string(from: NSNumber(value: secs)) else {
             return "0:00"
         }
-        return "\(minString): \(secString)"
+        return "\(minString) : \(secString)"
     }
     
     //MARK: - Constraints
     func addConstraints() {
         
         timeView.edgesToSuperview()
+        
+      // полоска над картинкой
+        
+        strip.bottomToTop(of: trackImage, offset: -37)
+        strip.centerX(to: timeView)
+        strip.width(28)
+        strip.height(4)
         
         // обложка трека
         trackImage.top(to: timeView, offset: 100)
