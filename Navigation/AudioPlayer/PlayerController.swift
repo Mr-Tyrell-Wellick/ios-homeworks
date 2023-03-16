@@ -309,7 +309,6 @@ final class PlayerController: UIViewController {
         timeView.edgesToSuperview()
         
       // полоска над картинкой
-        
         strip.bottomToTop(of: trackImage, offset: -37)
         strip.centerX(to: timeView)
         strip.width(28)

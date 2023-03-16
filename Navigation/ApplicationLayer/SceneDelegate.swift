@@ -90,6 +90,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let url = String(appConfiguration?.rawValue ?? "")
         NetWorkService.performRequest(with: url)
         print("Downloading data from: \(url)")
+        
+        
+        //MARK: - 10 (инициализируем кейсы)
+        appConfiguration = AppConfiguration.titleData
+        if let url = appConfiguration {
+            InfoNetworkService.titleRequest(for: url)
+        } else {
+            print("Wrong URL to request")
+        }
+        
+        appConfiguration = AppConfiguration.planetData
+        if let url = appConfiguration {
+            InfoNetworkService.orbitalRequest(for: url)
+        } else {
+            print("Wrong URL to request")
+        }
     }
     
     //MARK: - Others
