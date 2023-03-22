@@ -21,3 +21,8 @@ enum StatusError: Error {
     case emptyStatus
     case longStatus
 }
+
+// перечисление ошибок в авторизации
+enum AuthorizationError: Error {
+    case userNotFound
+}

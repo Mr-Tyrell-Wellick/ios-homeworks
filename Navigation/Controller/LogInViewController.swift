@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class LogInViewController: UIViewController {
     
@@ -48,7 +49,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.textColor = .black
-        textField.text = "mafia"
+        //        textField.text = "mafia"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.font = .systemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
@@ -70,7 +71,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.textColor = .black
-        textField.text = "pass"
+        //        textField.text = "pass"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.font = .systemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
@@ -120,20 +121,57 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(logInbutton)
         
         // создаем action для alert'a
-        alertController.addAction(UIAlertAction(title: "Попробовать снова", style: .default))
+        //        alertController.addAction(UIAlertAction(title: "Попробовать снова", style: .default))
         
     }
     
     // создаем alert в случае неверного ввода логина
-    let alertController = UIAlertController(title: "Ошибка ввода", message: "Логин введен неверно", preferredStyle: .alert)
+    //    let alertController = UIAlertController(title: "Ошибка ввода", message: "Логин введен неверно", preferredStyle: .alert)
     
     //функция нажатия на клавишу Log In открывает ProfileView (p.s. внесены изменения. Согласно заданию, если debug - версия, то отображается один контент, если release - версия, то другой контент)
+    
+    
+    //MARK: - authorization and alerts
+    
+    // Функция для проверки доступа пользователя
+    func checkAccess(login: String, password: String) throws {
+        
+        // Вызов метода делегата, который проверяет правильность ввода логина и пароля
+        if(loginDelegate?.check(self, login: login, password: password)) == false {
+            throw AuthorizationError.userNotFound
+        }
+    }
+    // Функция для вывода сообщения об ошибке при неверном вводе пароля
+    func badAlertPassword(message: String) {
+        let badAlert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        badAlert.addAction(UIAlertAction(title: "Try again", style: .default))
+        self.present(badAlert, animated: true, completion: nil)
+    }
+    
+    // Функция для вывода сообщения об успешной операции
+    func goodAlert(message: String) {
+        let goodAlert = UIAlertController(title: "Well done", message: message, preferredStyle: .alert)
+        goodAlert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(goodAlert, animated: true, completion: nil)
+    }
+    // Функция для вывода сообщения об ошибке при неверном вводе логина
+    // Возвращает результат в замыкании
+    func badAlertLogin(message: String, completion: @escaping (Bool) -> Void) {
+        let badAlert = UIAlertController(title: "User not found", message: "Do you want to create a new account?", preferredStyle: .alert)
+        badAlert.addAction(UIAlertAction(title: "Register", style: .default, handler: { action in
+            completion(true)
+        }))
+        badAlert.addAction(UIAlertAction(title: "Try again", style: .default))
+        self.present(badAlert, animated: true, completion: nil)
+    }
+    
+    //нажатие на кнопку Log In
     @objc func showProfileView() {
         
         // текст, который вводит пользователь в первую строку (где указывается логин)
-        let enteredUserLogin = logInTextField.text
+        let enteredUserLogin = logInTextField.text!
         // текст, который вводит пользователь во вторую строку (где указывается пароль)
-        let enteredPassword = passwordTextField.text
+        let enteredPassword = passwordTextField.text!
         
 #if DEBUG
         
@@ -142,12 +180,26 @@ class LogInViewController: UIViewController {
         let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
 #endif
         
-        if loginDelegate?.check(self, login: enteredUserLogin ?? "", password: enteredPassword ?? "") == true {
-            let profileViewController = ProfileViewController()
-            profileViewController.user_1 = userLogin.user
-            navigationController?.pushViewController(profileViewController, animated: true)
-        } else {
-            self.present(alertController, animated: true, completion: nil)
+        // Проверяем введенные учетные данные с помощью сервиса CheckerService и обрабатываем результат с помощью блока closure
+        CheckerService().checkCredentials(login: enteredUserLogin, password: enteredPassword) { result in
+            if result == "Success authorization" {
+                let profileViewController = ProfileViewController()
+                profileViewController.user_1 = userLogin.user
+                self.navigationController?.pushViewController(profileViewController, animated: true)
+            } else if result == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                self.badAlertLogin(message: result) { result in
+                    CheckerService().signUp(login: enteredUserLogin, password: enteredPassword) { result in
+                        if result == "Success registration" {
+                            self.goodAlert(message: result)
+                            
+                        } else {
+                            self.badAlertPassword(message: result)
+                        }
+                    }
+                }
+            } else {
+                self.badAlertPassword(message: result)
+            }
         }
     }
     
@@ -200,6 +252,7 @@ class LogInViewController: UIViewController {
     
     @objc private func didHideKeyboard(_ notification: Notification) {
         self.forcedHidingKeyboard()
+        print("Hide keyboard")
     }
     
     @objc private func forcedHidingKeyboard() {
