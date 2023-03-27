@@ -46,6 +46,8 @@
 		F7BC095F29B8C61F0046F01A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = F7BC095E29B8C61F0046F01A /* TinyConstraints */; };
 		F7BD9AA128D0B35900EC85CD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD9AA028D0B35900EC85CD /* InfoViewController.swift */; };
 		F7D555C32970AC2600E5DCBF /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D555C22970AC2600E5DCBF /* Checker.swift */; };
+		F7E3FD4229D070AD00B1CA1B /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E3FD4129D070AD00B1CA1B /* FileViewController.swift */; };
+		F7E3FD4529D0B9F200B1CA1B /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E3FD4429D0B9F200B1CA1B /* TextPicker.swift */; };
 		F7FA218128FEBFDE00B6638A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA218028FEBFDE00B6638A /* PostTableViewCell.swift */; };
 		F7FA218C28FF68AC00B6638A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA218B28FF68AC00B6638A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,8 @@
 		F7BC095B29B7C1720046F01A /* TrackListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewCell.swift; sourceTree = "<group>"; };
 		F7BD9AA028D0B35900EC85CD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		F7D555C22970AC2600E5DCBF /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		F7E3FD4129D070AD00B1CA1B /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		F7E3FD4429D0B9F200B1CA1B /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		F7FA218028FEBFDE00B6638A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F7FA218928FF093E00B6638A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F7FA218B28FF68AC00B6638A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				F7554C8428FAF48E00CF9421 /* LogInViewController.swift */,
 				F727DD7B28CFC4130027D6BE /* PostViewController.swift */,
 				F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */,
+				F7E3FD4129D070AD00B1CA1B /* FileViewController.swift */,
 				F7BD9AA028D0B35900EC85CD /* InfoViewController.swift */,
 				F7B9B52D2908179200C262F5 /* PhotosViewController.swift */,
 			);
@@ -223,6 +228,7 @@
 				F7D555C22970AC2600E5DCBF /* Checker.swift */,
 				F735BEE729B36CAB00B9F5B9 /* Error.swift */,
 				F73B5A1829B62C1400557D42 /* TrackModel.swift */,
+				F7E3FD4429D0B9F200B1CA1B /* TextPicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			files = (
 				F7B9B5272905911300C262F5 /* PhotosTableViewCell.swift in Sources */,
 				F77F380329869FF20049B6FC /* FeedModel.swift in Sources */,
+				F7E3FD4529D0B9F200B1CA1B /* TextPicker.swift in Sources */,
 				F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */,
 				F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */,
 				F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */,
@@ -409,6 +416,7 @@
 				F74B72FD28CCAB3A00D10E21 /* FeedViewController.swift in Sources */,
 				F7B9B52E2908179200C262F5 /* PhotosViewController.swift in Sources */,
 				F7FA218C28FF68AC00B6638A /* ProfileViewController.swift in Sources */,
+				F7E3FD4229D070AD00B1CA1B /* FileViewController.swift in Sources */,
 				F77F3801298471940049B6FC /* CustomButton.swift in Sources */,
 				F7FA218128FEBFDE00B6638A /* PostTableViewCell.swift in Sources */,
 				F73B5A1929B62C1400557D42 /* TrackModel.swift in Sources */,

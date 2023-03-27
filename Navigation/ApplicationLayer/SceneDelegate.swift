@@ -31,12 +31,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var profileInterfaceLayout = UINavigationController()
         var loginTabNavigationController = UINavigationController()
         var playerTabNavigationController = UINavigationController()
+        var fileTabNavigationController = UINavigationController()
         
         //         MARK: - 3
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
         userInterfaceLayout = UINavigationController.init(rootViewController: FeedViewController())
         profileInterfaceLayout = UINavigationController.init(rootViewController: ProfileViewController())
         playerTabNavigationController = UINavigationController.init(rootViewController: TrackListController())
+        fileTabNavigationController = UINavigationController.init(rootViewController: FileViewController())
         
         /*
          /// Внедряем зависимость контроллера LoginViewController от LoginInspector
@@ -51,9 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         //         MARK: - 4
-        // Заполняем  3 контейнера с контроллерами таббара нашими навигационными контроллерами
+        // Заполняем контейнеры с контроллерами таббара нашими навигационными контроллерами
         //        tabBarController.viewControllers = [userInterfaceLayout, profileInterfaceLayout]
-        tabBarController.viewControllers = [userInterfaceLayout, playerTabNavigationController, loginTabNavigationController]
+        tabBarController.viewControllers = [userInterfaceLayout, fileTabNavigationController,playerTabNavigationController, loginTabNavigationController, fileTabNavigationController]
         
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
@@ -61,6 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
         let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
         let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.circle"), tag: 1)
+        let item4 = UITabBarItem(title: "File", image: UIImage(systemName: "folder.badge.gear"), tag: 3)
         
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
@@ -69,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileInterfaceLayout.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item2
         playerTabNavigationController.tabBarItem = item3
-        
+        fileTabNavigationController.tabBarItem = item4
         
         //         MARK: - 7
         // Обращаемся к методу, который позволяет кастомизировать TabBar под себя
