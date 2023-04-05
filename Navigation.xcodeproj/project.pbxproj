@@ -33,6 +33,10 @@
 		F7846CF529C7228E00C29890 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F7846CF429C7228E00C29890 /* FirebaseAuth */; };
 		F7846CF729C8C03100C29890 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7846CF629C8C03100C29890 /* CheckerService.swift */; };
 		F7846CF929C9DA8600C29890 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7846CF829C9DA8600C29890 /* GoogleService-Info.plist */; };
+		F78F4BDC29DAE36C006857A6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F78F4BDB29DAE36C006857A6 /* Realm */; };
+		F78F4BDE29DAE36C006857A6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F78F4BDD29DAE36C006857A6 /* RealmSwift */; };
+		F78F4BE029DC4FF0006857A6 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F4BDF29DC4FF0006857A6 /* RealmModel.swift */; };
+		F78F4BE229DC529D006857A6 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F4BE129DC529D006857A6 /* RealmManager.swift */; };
 		F7B9B5272905911300C262F5 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B5262905911300C262F5 /* PhotosTableViewCell.swift */; };
 		F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */; };
 		F7B9B52C2907F83200C262F5 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9B52B2907F83200C262F5 /* PhotoModel.swift */; };
@@ -99,6 +103,8 @@
 		F77F380229869FF20049B6FC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		F7846CF629C8C03100C29890 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
 		F7846CF829C9DA8600C29890 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F78F4BDF29DC4FF0006857A6 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		F78F4BE129DC529D006857A6 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		F7B9B5262905911300C262F5 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		F7B9B52829073C0200C262F5 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7B9B52B2907F83200C262F5 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
@@ -121,10 +127,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78F4BDE29DAE36C006857A6 /* RealmSwift in Frameworks */,
 				F7553B7C2950940400B1B4FE /* StorageService.framework in Frameworks */,
 				F75063B12979A76500E36431 /* iOSIntPackage in Frameworks */,
 				F7BC095F29B8C61F0046F01A /* TinyConstraints in Frameworks */,
 				F7846CF529C7228E00C29890 /* FirebaseAuth in Frameworks */,
+				F78F4BDC29DAE36C006857A6 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +231,8 @@
 				F7D555C22970AC2600E5DCBF /* Checker.swift */,
 				F735BEE729B36CAB00B9F5B9 /* Error.swift */,
 				F73B5A1829B62C1400557D42 /* TrackModel.swift */,
+				F78F4BDF29DC4FF0006857A6 /* RealmModel.swift */,
+				F78F4BE129DC529D006857A6 /* RealmManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +306,8 @@
 				F75063B02979A76500E36431 /* iOSIntPackage */,
 				F7BC095E29B8C61F0046F01A /* TinyConstraints */,
 				F7846CF429C7228E00C29890 /* FirebaseAuth */,
+				F78F4BDB29DAE36C006857A6 /* Realm */,
+				F78F4BDD29DAE36C006857A6 /* RealmSwift */,
 			);
 			productName = Navigation;
 			productReference = F71D779A28C8A17300F9412A /* Navigation.app */;
@@ -350,6 +362,7 @@
 				F75063AF2979A76500E36431 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 				F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 				F7846CF329C7228E00C29890 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F78F4BDA29DAE36C006857A6 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = F71D779B28C8A17300F9412A /* Products */;
 			projectDirPath = "";
@@ -396,6 +409,7 @@
 				F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */,
 				F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */,
 				F7B9B52929073C0200C262F5 /* PhotosCollectionViewCell.swift in Sources */,
+				F78F4BE229DC529D006857A6 /* RealmManager.swift in Sources */,
 				F706211329BD044E000A55CD /* NetworkService.swift in Sources */,
 				F727DD7C28CFC4130027D6BE /* PostViewController.swift in Sources */,
 				F7BC095C29B7C1720046F01A /* TrackListViewCell.swift in Sources */,
@@ -405,6 +419,7 @@
 				F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */,
 				F7D555C32970AC2600E5DCBF /* Checker.swift in Sources */,
 				F71D779E28C8A17300F9412A /* AppDelegate.swift in Sources */,
+				F78F4BE029DC4FF0006857A6 /* RealmModel.swift in Sources */,
 				F7BD9AA128D0B35900EC85CD /* InfoViewController.swift in Sources */,
 				F74B72FD28CCAB3A00D10E21 /* FeedViewController.swift in Sources */,
 				F7B9B52E2908179200C262F5 /* PhotosViewController.swift in Sources */,
@@ -733,6 +748,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		F78F4BDA29DAE36C006857A6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.38.0;
+			};
+		};
 		F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/roberthein/TinyConstraints";
@@ -753,6 +776,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F7846CF329C7228E00C29890 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		F78F4BDB29DAE36C006857A6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F78F4BDA29DAE36C006857A6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		F78F4BDD29DAE36C006857A6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F78F4BDA29DAE36C006857A6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		F7BC095E29B8C61F0046F01A /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;

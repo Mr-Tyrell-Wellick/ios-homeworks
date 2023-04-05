@@ -46,7 +46,3 @@ class CheckerService: CheckerServiceProtocol {
         }
     }
 }
-
-//Пароль для входа
-//321@gmail.com
-//q12345

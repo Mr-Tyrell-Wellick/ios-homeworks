@@ -16,6 +16,8 @@ class LogInViewController: UIViewController {
     // создаем свойство loginDelegate c типом LoginViewControllerDelegate, который будет проверять значения, введенные в текстовые поля контроллера (login and password)
     var loginDelegate: LoginViewControllerDelegate?
     
+    var realmManager = RealmManager()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -97,15 +99,15 @@ class LogInViewController: UIViewController {
     }()
     
     //MARK: - Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.setupGestures()
         self.navigationController?.navigationBar.isHidden = true
-        
+       
         addView()
         addConstraints()
+        userVerification()
     }
     
     // MARK: - добавление view
@@ -119,18 +121,22 @@ class LogInViewController: UIViewController {
         
         scrollView.addSubview(stackViewTextField)
         scrollView.addSubview(logInbutton)
-        
-        // создаем action для alert'a
-        //        alertController.addAction(UIAlertAction(title: "Попробовать снова", style: .default))
-        
     }
-    
-    // создаем alert в случае неверного ввода логина
-    //    let alertController = UIAlertController(title: "Ошибка ввода", message: "Логин введен неверно", preferredStyle: .alert)
-    
-    //функция нажатия на клавишу Log In открывает ProfileView (p.s. внесены изменения. Согласно заданию, если debug - версия, то отображается один контент, если release - версия, то другой контент)
-    
-    
+    // MARK: Verification
+    //верификация юзера (перезагружаем список пользователей из базы данных Realm, если список НЕ пустой, то выполняем переход на следующий экран)
+    func userVerification() {
+        realmManager.reloadUserData()
+        if !realmManager.realmUsers.isEmpty {
+            let nextVC = ProfileViewController()
+            #if DEBUG
+            let userLogin = TestUserService(user: User(userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
+            #else
+            let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
+            #endif
+            nextVC.user_1 = userLogin.user
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
     //MARK: - authorization and alerts
     
     // Функция для проверки доступа пользователя
@@ -180,18 +186,22 @@ class LogInViewController: UIViewController {
         let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
 #endif
         
+    // MARK: - расскоментировать
         // Проверяем введенные учетные данные с помощью сервиса CheckerService и обрабатываем результат с помощью блока closure
         CheckerService().checkCredentials(login: enteredUserLogin, password: enteredPassword) { result in
             if result == "Success authorization" {
                 let profileViewController = ProfileViewController()
                 profileViewController.user_1 = userLogin.user
+                //если авторизация прошла успешно, то сохраняем нового пользователя в Realm
+                self.realmManager.saveRealmUser(login: enteredUserLogin, password: enteredPassword)
                 self.navigationController?.pushViewController(profileViewController, animated: true)
             } else if result == "There is no user record corresponding to this identifier. The user may have been deleted." {
                 self.badAlertLogin(message: result) { result in
                     CheckerService().signUp(login: enteredUserLogin, password: enteredPassword) { result in
                         if result == "Success registration" {
+                            //если регистрация прошла успешно, то сохраняем нового пользователя в Realm
+                            self.realmManager.saveRealmUser(login: enteredUserLogin, password: enteredPassword)
                             self.goodAlert(message: result)
-                            
                         } else {
                             self.badAlertPassword(message: result)
                         }
@@ -202,6 +212,12 @@ class LogInViewController: UIViewController {
             }
         }
     }
+         
+    // функция для загрузки данных пользователя из Realm при запуске приложения
+    func loadUserData() {
+        realmManager.reloadUserData()
+    }
+    
     
     // MARK: - KEYBOARD (вся работа с клавиатурой)
     
@@ -226,7 +242,6 @@ class LogInViewController: UIViewController {
     }
     
     // скрытие клавиатуры, расчет и определение перекрытия
-    
     @objc private func didShowKeyboard(_ notification: Notification) {
         print("Show keyboard")
         
@@ -235,7 +250,6 @@ class LogInViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             
             // формула расчета перекрытия кнопки клавиатурой
-            
             let loginButtonBottomPointY = self.logInbutton.frame.origin.y + logInbutton.frame.height
             
             let keyboardOriginY = self.view.frame.height - keyboardHeight
@@ -249,7 +263,6 @@ class LogInViewController: UIViewController {
     }
     
     // функция сокрытия клавиатуры
-    
     @objc private func didHideKeyboard(_ notification: Notification) {
         self.forcedHidingKeyboard()
         print("Hide keyboard")
@@ -261,7 +274,6 @@ class LogInViewController: UIViewController {
     }
     
     // MARK: - constraints
-    
     func addConstraints() {
         NSLayoutConstraint.activate([
             
@@ -298,4 +310,3 @@ class LogInViewController: UIViewController {
         ])
     }
 }
-
