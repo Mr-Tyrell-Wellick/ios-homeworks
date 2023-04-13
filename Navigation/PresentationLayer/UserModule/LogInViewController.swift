@@ -51,6 +51,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.textColor = .black
+        textField.keyboardType = .emailAddress // клавиатура имеет символ "@" и ".com" для быстрого ввода адреса электронной почты
         //        textField.text = "mafia"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.font = .systemFont(ofSize: 16)

@@ -175,7 +175,7 @@ class ProfileViewController: UIViewController {
                                                object: nil)
     }
     
-    // MARK: - constraints
+    // MARK: - Constraints
     
     func addConstraints() {
         NSLayoutConstraint.activate([
@@ -200,6 +200,19 @@ class ProfileViewController: UIViewController {
             hiddenCloseView.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
+    
+    // MARK: - CoreData
+    
+    func saveToFavorites(postId: Int) {
+        guard let post = posts.first(where: { $0.id == postId }) else { return }
+        CoreDataManager.defaultManager.addPostToFavorite(
+            author: post.author,
+            descText: post.description,
+            image: post.image,
+            likes: Int64(post.likes),
+            views: Int64(post.views)
+        )
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -213,6 +226,11 @@ extension ProfileViewController: UITableViewDelegate {
             return profile
         }
         return nil
+    }
+    
+    // убираем подстветку ячейки при нажатии (затемнение фона)
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        false
     }
 }
 
@@ -258,7 +276,6 @@ extension ProfileViewController: ProfileHeaderDelegate {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     
@@ -296,30 +313,46 @@ extension ProfileViewController: UITableViewDataSource {
         }
     }
     
-    //  метод переиспользуемой ячейки, и ее заполнение данными.
+    //MARK: - TODO (ковырнул, надо исправлять)
     
+    //  метод переиспользуемой ячейки, и ее заполнение данными.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 { //нулевая секция с лентой фотографий
+        switch indexPath.section {
+        case 0:
             return PhotosTableViewCell()
-        } else if indexPath.section == 1 { //первая секция лента с новостями(постами)
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "postTableCellID", for: indexPath) as? PostTableViewCell else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "defaultTableCellID", for: indexPath)
                 return cell
             }
-            
-            let post = posts[indexPath.row]
-            let postViewModel = PostTableViewCell.ViewModel(
-                author: post.author,
-                descriptionText: post.description,
-                image: post.image,
-                likes: "Likes:\(post.likes)",
-                views: "Views: \(post.views)"
-            )
-            cell.setup(with: postViewModel)
-            
+            cell.setup(posts[indexPath.row])
+            cell.delegate = self
             return cell
-        } else {
+        default:
             return tableView.dequeueReusableCell(withIdentifier: "defaultTableCellID", for: indexPath)
         }
+    }
+}
+
+// MARK: - PostCellDelegate
+extension ProfileViewController: PostCellDelegate {
+    func didDoubleTapToPost(postId: Int) {
+        let alert = UIAlertController(title: "Add to 'Favorites'", message: nil, preferredStyle: .alert)
+        
+        // создаем действие "ОК"
+        let actionOK = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
+            saveToFavorites(postId: postId)
+        }
+        
+        // создаем действие "Cancel" (отмена)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        // для кнопки отмены устанавливаем красный цвет
+        actionCancel.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        // добавляем действия в UIAlertController
+        alert.addAction(actionOK)
+        alert.addAction(actionCancel)
+        
+        present(alert, animated: true)
     }
 }

@@ -90,7 +90,7 @@ final class PlayerController: UIViewController {
         slider.minimumValue = 0.0
         slider.translatesAutoresizingMaskIntoConstraints = false
         // таргет на кнопку
-        slider.addTarget(self, action: #selector(rewindTime), for: .valueChanged)
+        slider.addTarget(PlayerController.self, action: #selector(rewindTime), for: .valueChanged)
         return slider
     }()
     

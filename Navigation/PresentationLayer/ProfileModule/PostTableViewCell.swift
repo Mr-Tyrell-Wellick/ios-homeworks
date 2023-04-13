@@ -7,18 +7,20 @@
 
 import Foundation
 import UIKit
+import StorageService
+
+
+
+protocol PostCellDelegate: AnyObject {
+    func didDoubleTapToPost(postId: Int)
+}
+
 
 class PostTableViewCell: UITableViewCell {
     
-    struct ViewModel {
-        
-        let author: String
-        let descriptionText: String
-        let image: UIImage?
-        let likes: String
-        let views: String
-    }
-    
+    weak var delegate: PostCellDelegate?
+    private var postId: Int?
+     
     private lazy var author: UILabel = {
         let label = UILabel()
         label.text = "vedmak.official"
@@ -70,13 +72,14 @@ class PostTableViewCell: UITableViewCell {
         return views
     }()
     
-    //MARK: - Methods
+    //MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addView()
         addConstraints()
+        addTabGestures()
         
     }
     required init?(coder: NSCoder) {
@@ -84,13 +87,27 @@ class PostTableViewCell: UITableViewCell {
     }
     
     // метод, который устанавливает текст в лейбл
-    func setup(with viewModel: ViewModel) {
-        self.author.text = viewModel.author
-        self.image.image = viewModel.image
-        self.descriptionText.text = viewModel.descriptionText
-        self.likes.text = viewModel.likes
-        self.views.text = viewModel.views
-        
+    func setup(_ post: Post) {
+        self.author.text = post.author
+        self.image.image = UIImage(named: post.image)
+        self.descriptionText.text = post.description
+        self.likes.text = "Likes: \(post.likes)"
+        self.views.text = "Views: \(post.views)"
+        self.postId = post.id
+    }
+    
+    // MARK: - Actions
+    
+    // добавляем распознавание двойного касания на текущий объект
+    func addTabGestures() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(postTap))
+        gesture.numberOfTapsRequired = 2
+        self.addGestureRecognizer(gesture)
+    }
+
+    @objc private func postTap() {
+        guard let postId = postId else { return }
+        delegate?.didDoubleTapToPost(postId: postId)
     }
     
     // MARK: - добавление view
@@ -131,5 +148,3 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
 }
-
-
