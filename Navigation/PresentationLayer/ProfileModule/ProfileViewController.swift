@@ -210,7 +210,8 @@ class ProfileViewController: UIViewController {
             descText: post.description,
             image: post.image,
             likes: Int64(post.likes),
-            views: Int64(post.views)
+            views: Int64(post.views),
+            identificator: Int64(post.id)
         )
     }
 }

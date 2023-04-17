@@ -45,19 +45,27 @@ public var posts: [Post] = [
         description: "«Нетоло́гия» — российская компания и образовательная онлайн-платформа, запущенная в 2011 году. Одна из ведущих российских компаний онлайн-образования[1]. Входит в IT-холдинг TalentTech, объединяющий компании по трём направлениям: EdTech, HRTech и Freelance. EdTech-сегмент холдинга, наряду с «Нетологией» (включая EdMarket), представлен компаниями «Фоксфорд» и «TalentTech.Обучение».",
         image: "image2",
         likes: 766,
-        views: 893, id: 1),
-    Post(
-        author: "vedmak.official",
-        description: "Новые кадры со сьемок второго сезона сериала \"Ведьмак \"",
-        image: "image1",
-        likes: 240,
-        views: 312, id: 2),
-    
-    Post(
-        author: "Нетология. Меняем карьеру через образование.",
-        description: "«Нетоло́гия» — российская компания и образовательная онлайн-платформа, запущенная в 2011 году. Одна из ведущих российских компаний онлайн-образования[1]. Входит в IT-холдинг TalentTech, объединяющий компании по трём направлениям: EdTech, HRTech и Freelance. EdTech-сегмент холдинга, наряду с «Нетологией» (включая EdMarket), представлен компаниями «Фоксфорд» и «TalentTech.Обучение».",
-        image: "image2",
-        likes: 766,
         views: 893,
+        id: 1),
+    Post(
+        author: "Pablo Escobar",
+        description: "«Арт из сериала Narcos",
+        image: "image4",
+        likes: 800,
+        views: 925,
+        id: 2),
+    Post(
+        author: "Tony Montana",
+        description: "«Постер из фильма Scarface",
+        image: "image5",
+        likes: 500,
+        views: 535,
         id: 3),
+    Post(
+        author: "Actor Pedro Pascal",
+        description: "«Актер Педро Паскаль, в роли агента УБН Хавьера Пеньи из сериала Narcos",
+        image: "image3",
+        likes: 444,
+        views: 500,
+        id: 4)
 ]
