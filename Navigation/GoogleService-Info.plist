@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>327973903682-7m1gsi365m8cm7f82p9pcpakk2fpt4pt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.327973903682-7m1gsi365m8cm7f82p9pcpakk2fpt4pt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCu35A55tZclBNQM9Wo4hYpA318SkVRNoU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>327973903682</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>rorshix97-gmail.com.Navigation</string>
+	<key>PROJECT_ID</key>
+	<string>netology-4cb8c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>netology-4cb8c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:327973903682:ios:ff63fe84aa06a4302dfcdb</string>
+</dict>
+</plist>
