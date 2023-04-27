@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var loginTabNavigationController: UINavigationController!
         var playerTabNavigationController: UINavigationController!
         var favoriteTabNavigationController: UINavigationController!
+        var mapvTabNavigationController: UINavigationController!
         
         //         MARK: - 3
         // создаем навигационные контроллеры и объявляем рутовые (стартовые) экраны
@@ -36,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileInterfaceLayout = .init(rootViewController: ProfileViewController())
         playerTabNavigationController = .init(rootViewController: TrackListController())
         favoriteTabNavigationController = .init(rootViewController: FavoriteViewController())
+        mapvTabNavigationController = .init(rootViewController: MapViewController())
         
         // Внедряем зависимость контроллера LoginViewController от MyLoginFactory
         let loginVC = LogInViewController()
@@ -46,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //         MARK: - 4
         // Заполняем  3 контейнера с контроллерами таббара нашими навигационными контроллерами
         
-        tabBarController.viewControllers = [userInterfaceLayout, playerTabNavigationController, favoriteTabNavigationController, loginTabNavigationController]
+        tabBarController.viewControllers = [userInterfaceLayout, playerTabNavigationController, favoriteTabNavigationController, loginTabNavigationController, mapvTabNavigationController]
         
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
@@ -55,6 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
         let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.circle"), tag: 1)
         let item4 = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart.rectangle"), tag: 3)
+        let item5 = UITabBarItem(title: "Maps", image: UIImage(systemName: "map"), tag: 4)
         
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
@@ -64,6 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         loginTabNavigationController.tabBarItem = item2
         playerTabNavigationController.tabBarItem = item3
         favoriteTabNavigationController.tabBarItem = item4
+        mapvTabNavigationController.tabBarItem = item5
         
         
         //         MARK: - 7
