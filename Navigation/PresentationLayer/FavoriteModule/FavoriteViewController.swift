@@ -51,7 +51,7 @@ final class FavoriteViewController: UIViewController, UITableViewDelegate {
     func setupNavigation() {
         // Заголовок
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Favorite"
+        navigationItem.title = Strings.navigationItem1.localized
         
         // Создание кнопки удаления/(корзины) в UINAvigationBar
         let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deletePosts))

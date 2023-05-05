@@ -21,20 +21,20 @@ class FeedViewController: UIViewController {
     
     //создание кнопки для просмотра поста
     private var buttonOne: CustomButton = {
-        let button = CustomButton(title: "View Post", backgroundColor: .systemIndigo)
+        let button = CustomButton(title: Strings.buttonTitle1.localized, backgroundColor: .systemIndigo)
         return button
     }()
     
     // создание второй кнопки
     private var buttonTwo: CustomButton = {
-        let button = CustomButton(title: "Second View Post", backgroundColor: .systemRed)
+        let button = CustomButton(title: Strings.buttonTitle2.localized, backgroundColor: .systemRed)
         return button
     }()
     
     // текстовое поле для проверки пароля (можно было бы создать еще CustomTextField, но пришлось бы переписывать много кода, поэтому решил сделать так
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Set your password"
+        textField.placeholder = Strings.passwordPlaceholder.localized
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.backgroundColor = .white
         textField.isSecureTextEntry = true
@@ -44,13 +44,13 @@ class FeedViewController: UIViewController {
     
     // создание кнопки для проверки пароля CheckGuessButton
     private var checkButton: CustomButton = {
-        let button = CustomButton(title: "Check secret word", backgroundColor: .black)
+        let button = CustomButton(title: Strings.buttonTitle3.localized, backgroundColor: .black)
         return button
     }()
     
     // создание кнопки, которая выводит результат - true/false
     private var resultButton: CustomButton = {
-        let button = CustomButton(title: "Check", backgroundColor: .systemPink)
+        let button = CustomButton(title: Strings.buttonTitle4.localized, backgroundColor: .systemPink)
         return button
     }()
     
@@ -70,7 +70,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        self.title = "Feed"
+//        self.title = "Feed"
         //отображение кнопок на экране
         view.addSubview(stackViewButton)
         // сборка и добавление на экран
@@ -104,10 +104,10 @@ class FeedViewController: UIViewController {
             let result: Bool = FeedModel().check(word: inputWord)
             if result == true {
                 self.resultButton.backgroundColor = .systemGreen
-                self.resultButton.setTitle("True", for: .normal)
+                self.resultButton.setTitle(Strings.resultButtonTrue.localized, for: .normal)
             } else {
                 self.resultButton.backgroundColor = .systemRed
-                self.resultButton.setTitle("False", for: .normal)
+                self.resultButton.setTitle(Strings.resultButtonFalse.localized, for: .normal)
             }
         }
     }

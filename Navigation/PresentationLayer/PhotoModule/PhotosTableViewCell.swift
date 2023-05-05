@@ -17,7 +17,7 @@ class PhotosTableViewCell: UITableViewCell {
     // заголовок
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Photos"
+        titleLabel.text = Strings.photoLabel.localized
         titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

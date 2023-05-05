@@ -54,7 +54,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     // текстовое поле для ввода текста статуса
     private let statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Enter text here"
+        textField.placeholder = Strings.statusTextField.localized
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
@@ -71,7 +71,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     //кнопка для показа нового статуса
     private let setStatusButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Show Status", for: .normal)
+        button.setTitle(Strings.statusButton.localized, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14

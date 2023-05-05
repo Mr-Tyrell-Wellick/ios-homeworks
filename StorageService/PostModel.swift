@@ -37,7 +37,7 @@ public var posts: [Post] = [
         author: "vedmak.official",
         description: "Новые кадры со съемок второго сезона сериала \"Ведьмак \"",
         image: "image1",
-        likes: 240,
+        likes: 0,
         views: 312,
         id: 0),
     Post(

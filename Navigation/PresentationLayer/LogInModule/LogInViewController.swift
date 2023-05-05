@@ -35,7 +35,7 @@ class LogInViewController: UIViewController {
     //    создание кнопки "Log In"
     private let logInbutton: UIButton = {
         let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle(Strings.logInButton.localized, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor(named: "Blue_pixel")
         button.layer.cornerRadius = 10
@@ -49,7 +49,7 @@ class LogInViewController: UIViewController {
     // создание кнопки для ввода email or phone
     private let logInTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email or phone"
+        textField.placeholder = Strings.logInTextField.localized
         textField.textColor = .black
         textField.keyboardType = .emailAddress // клавиатура имеет символ "@" и ".com" для быстрого ввода адреса электронной почты
         //        textField.text = "mafia"
@@ -72,7 +72,7 @@ class LogInViewController: UIViewController {
     // создание кнопки для ввода password
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password"
+        textField.placeholder = Strings.passwordTextField.localized
         textField.textColor = .black
         //        textField.text = "pass"
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -130,9 +130,9 @@ class LogInViewController: UIViewController {
         if !realmManager.realmUsers.isEmpty {
             let nextVC = ProfileViewController()
             #if DEBUG
-            let userLogin = TestUserService(user: User(userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
+            let userLogin = TestUserService(user: User(userName: Strings.userNameDebug.localized, avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
             #else
-            let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
+            let userLogin = CurrentUserService(user: User(userName: Strings.userNameRelease.localized, avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
             #endif
             nextVC.user_1 = userLogin.user
             navigationController?.pushViewController(nextVC, animated: true)
@@ -182,9 +182,9 @@ class LogInViewController: UIViewController {
         
 #if DEBUG
         
-        let userLogin = TestUserService(user: User(userName: "Eduardo Salamanca", avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
+        let userLogin = TestUserService(user: User(userName: Strings.userNameDebug.localized, avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
 #else
-        let userLogin = CurrentUserService(user: User(userName: "Lalo Salamanca", avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
+        let userLogin = CurrentUserService(user: User(userName: Strings.userNameRelease.localized, avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
 #endif
         
     // MARK: - расскоментировать

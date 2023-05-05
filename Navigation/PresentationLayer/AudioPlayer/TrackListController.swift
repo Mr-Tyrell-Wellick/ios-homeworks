@@ -49,7 +49,7 @@ final class TrackListController: UIViewController {
     
     // настройка верхнего Bar'a
     func navBarCustomization() {
-        navigationItem.title = "Playlist"
+        navigationItem.title = Strings.navigationItem2.localized
         
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.scrollEdgeAppearance = appearance

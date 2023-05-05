@@ -88,10 +88,16 @@ class PostTableViewCell: UITableViewCell {
     
     // метод, который устанавливает текст в лейбл
     func setup(_ post: Post) {
+        
+        let formattedString = NSLocalizedString("showLikesCount", comment: "")
+        let string = String(format: formattedString, Int(post.likes))
+        self.likes.text = string
+        
+        
         self.author.text = post.author
         self.image.image = UIImage(named: post.image)
         self.descriptionText.text = post.description
-        self.likes.text = "Likes: \(post.likes)"
+//        self.likes.text = "Likes: \(post.likes)"
         self.views.text = "Views: \(post.views)"
         self.postId = post.id
     }

@@ -53,11 +53,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //         MARK: - 5
         //Создаем кнопки, при нажатии которых, мы будем переходить в нужный контроллер)
         
-        let item1 = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
-        let item2 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
-        let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.circle"), tag: 1)
-        let item4 = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart.rectangle"), tag: 3)
-        let item5 = UITabBarItem(title: "Maps", image: UIImage(systemName: "map"), tag: 4)
+        let item1 = UITabBarItem(title: Strings.tabBarTitle1.localized, image: UIImage(systemName: "newspaper"), tag: 0)
+        let item2 = UITabBarItem(title: Strings.tabBarTitle2.localized, image: UIImage(systemName: "person"), tag: 2)
+        let item3 = UITabBarItem(title: Strings.tabBarTitle3.localized, image: UIImage(systemName: "play.circle"), tag: 1)
+        let item4 = UITabBarItem(title: Strings.tabBarTitle4.localized, image: UIImage(systemName: "heart.rectangle"), tag: 3)
+        let item5 = UITabBarItem(title: Strings.tabBarTitle5.localized, image: UIImage(systemName: "map"), tag: 4)
         
         //         MARK: - 6
         // Закрепляем за каждым контроллером TabBar'a item
