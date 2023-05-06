@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "postTableCellID")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "defaultTableCellID")
+        tableView.backgroundColor = colorSecondaryBackground
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -32,7 +33,7 @@ class ProfileViewController: UIViewController {
     // полупрозначная view, перекрывающая остальные элементы на экране.
     private lazy var hiddenView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = colorMainBackground
         view.alpha = 0
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false

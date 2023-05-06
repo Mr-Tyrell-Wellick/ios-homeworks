@@ -41,6 +41,7 @@ class PhotosViewController: UIViewController {
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: "CustomCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = colorMainBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()

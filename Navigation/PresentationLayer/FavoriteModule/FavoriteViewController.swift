@@ -36,7 +36,7 @@ final class FavoriteViewController: UIViewController, UITableViewDelegate {
     // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = colorMainBackground
         
         setupNavigation()
         addViews()
@@ -51,6 +51,7 @@ final class FavoriteViewController: UIViewController, UITableViewDelegate {
     func setupNavigation() {
         // Заголовок
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = colorTabBarTint
         navigationItem.title = Strings.navigationItem1.localized
         
         // Создание кнопки удаления/(корзины) в UINAvigationBar

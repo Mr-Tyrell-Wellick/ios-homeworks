@@ -18,24 +18,22 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = Strings.photoLabel.localized
-        titleLabel.textColor = .black
+        titleLabel.textColor = colorTextColor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
     // стрелка
-    
     private lazy var arrowImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "arrow.right")
-        image.tintColor = .black
+        image.tintColor = colorTextColor
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     // создание коллекции
-    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 8

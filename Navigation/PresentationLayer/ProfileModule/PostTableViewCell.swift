@@ -24,7 +24,7 @@ class PostTableViewCell: UITableViewCell {
     private lazy var author: UILabel = {
         let label = UILabel()
         label.text = "vedmak.official"
-        label.textColor = .black
+        label.textColor = colorTextColor
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class PostTableViewCell: UITableViewCell {
     private lazy var likes: UILabel = {
         let likes = UILabel()
         likes.text = "Likes: 643"
-        likes.textColor = .black
+        likes.textColor = colorTextColor
         likes.font = UIFont.systemFont(ofSize: 16)
         likes.translatesAutoresizingMaskIntoConstraints = false
         return likes
@@ -66,7 +66,7 @@ class PostTableViewCell: UITableViewCell {
     private lazy var views: UILabel = {
         let views = UILabel()
         views.text = "Views: 893"
-        views.textColor = .black
+        views.textColor = colorTextColor
         views.font = UIFont.systemFont(ofSize: 16)
         views.translatesAutoresizingMaskIntoConstraints = false
         return views

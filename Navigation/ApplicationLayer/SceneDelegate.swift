@@ -72,9 +72,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //         MARK: - 7
         // Обращаемся к методу, который позволяет кастомизировать TabBar под себя
-        UITabBar.appearance().tintColor = UIColor .systemBlue
-        UITabBar.appearance().backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)
-        
+        UITabBar.appearance().tintColor = colorTabBarTint
+        UITabBar.appearance().backgroundColor = colorTabBarMainBackground
         // MARK: - 8
         // Заполняем окно, назначаем ему рутовый экран и делаем видимым
         

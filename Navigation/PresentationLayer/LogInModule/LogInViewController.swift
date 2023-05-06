@@ -91,10 +91,10 @@ class LogInViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
         stackView.alignment = .center
-        stackView.backgroundColor = .systemGray6
+        stackView.backgroundColor = colorSecondaryBackground
         stackView.layer.cornerRadius = 10
         stackView.layer.borderWidth = 0.5
-        stackView.layer.borderColor = UIColor.lightGray.cgColor
+        stackView.layer.borderColor = colorBorder.cgColor
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -102,7 +102,7 @@ class LogInViewController: UIViewController {
     //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = colorMainBackground
         self.setupGestures()
         self.navigationController?.navigationBar.isHidden = true
        

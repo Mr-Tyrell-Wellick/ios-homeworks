@@ -35,7 +35,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Lalo Salamanca"
-        label.textColor = .black
+        label.textColor = colorTextColor
         label.font = UIFont(name: "HelveticaNeue-bold", size: 18.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -55,7 +55,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private let statusTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Strings.statusTextField.localized
-        textField.backgroundColor = .white
+        textField.backgroundColor = colorTextFieldColor
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor

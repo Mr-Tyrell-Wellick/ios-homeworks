@@ -36,11 +36,17 @@ class FeedViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = Strings.passwordPlaceholder.localized
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.backgroundColor = .white
+        textField.backgroundColor = colorTextFieldColor
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+//    textField.placeholder = "Введите текст"
+//    textField.setValue(UIColor.red, forKeyPath: "placeholderLabel.textColor")
+
+    
+    
     
     // создание кнопки для проверки пароля CheckGuessButton
     private var checkButton: CustomButton = {
