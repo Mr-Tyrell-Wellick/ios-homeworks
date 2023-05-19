@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Ульви Пашаев on 04.05.2023.
+  
+*/
+
+// MARK: Navigation TabBar
+"tabBarTitle1" = "Лента";
+"tabBarTitle2" = "Профиль";
+"tabBarTitle3" = "Плеер";
+"tabBarTitle4" = "Избранное";
+"tabBarTitle5" = "Карты";
+
+// MARK: - Feed Screen
+"buttonTitle1" = "Добавить пост";
+"buttonTitle2" = "Добавить второй пост";
+"passwordPlaceholder" = "Установите ваш пароль";
+"buttonTitle3" = "Проверьте секретное слово";
+"buttonTitle4" = "Проверить";
+"resultButtonTrue" = "Верно";
+"resultButtonFalse" = "Неверно";
+
+// MARK: - Favorite
+"navigationItem1" = "Избранное";
+
+// MARK: - Login Screen
+"logInTextField" = "Почта или мобильный телефон";
+"passwordTextField" = "Пароль";
+"logInButton" = "Войти";
+"authButton" = "Авторизация";
+
+// MARK: - TracklistController (Player)
+"navigationItem2" = "Плейлист";
+
+// MARK: - ProfileHeaderView
+"statusTextField" = "Введите текст здесь";
+"statusButton" = "Показать статус";
+
+// MARK: - PhotosTableViewCell
+"photoLabel" = "Фотографии";
+
+// MARK: - LogInViewController
+"userNameDebug" = "Эдуардо Саламанка";
+"userNameRelease" = "Лало Саламанка";
