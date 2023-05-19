@@ -29,6 +29,7 @@
 "logInTextField" = "Почта или мобильный телефон";
 "passwordTextField" = "Пароль";
 "logInButton" = "Войти";
+"authButton" = "Авторизация";
 
 // MARK: - TracklistController (Player)
 "navigationItem2" = "Плейлист";

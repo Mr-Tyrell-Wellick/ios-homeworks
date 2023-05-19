@@ -29,6 +29,7 @@
 "logInTextField" = "Email or phone";
 "passwordTextField" = "Password";
 "logInButton" = "Log In";
+"authButton" = "Authorization";
 
 // MARK: - TracklistController (Player)
 "navigationItem2" = "Playlist";

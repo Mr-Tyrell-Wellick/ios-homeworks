@@ -31,6 +31,7 @@ enum Strings: String {
     case logInTextField = "logInTextField"
     case passwordTextField = "passwordTextField"
     case logInButton = "logInButton"
+    case authButton = "authButton"
     
     // MARK: - TracklistController (Player)
     case navigationItem2 = "navigationItem2"

@@ -13,6 +13,8 @@ class LogInViewController: UIViewController {
     
     // MARK: - Properties
     
+    var authorizationService = LocalAuthorizationService()
+    
     // создаем свойство loginDelegate c типом LoginViewControllerDelegate, который будет проверять значения, введенные в текстовые поля контроллера (login and password)
     var loginDelegate: LoginViewControllerDelegate?
     
@@ -24,7 +26,7 @@ class LogInViewController: UIViewController {
         return scrollView
     }()
     
-    //    создание VK лого
+    // создание VK лого
     private lazy var logoImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "logo")
@@ -32,7 +34,7 @@ class LogInViewController: UIViewController {
         return image
     }()
     
-    //    создание кнопки "Log In"
+    // создание кнопки "Log In"
     private let logInbutton: UIButton = {
         let button = UIButton()
         button.setTitle(Strings.logInButton.localized, for: .normal)
@@ -43,6 +45,22 @@ class LogInViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         //target на кнопку
         button.addTarget(self, action: #selector(showProfileView), for: .touchUpInside)
+        return button
+    }()
+    
+    // создание кнопки "Face ID"
+    private let authButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Strings.authButton.localized, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor(named: "Blue_pixel")
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 0.5
+        button.setImage(UIImage(systemName: "faceid"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //target на кнопку
+        button.addTarget(self, action: #selector(verifyDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -122,6 +140,7 @@ class LogInViewController: UIViewController {
         
         scrollView.addSubview(stackViewTextField)
         scrollView.addSubview(logInbutton)
+        scrollView.addSubview(authButton)
     }
     // MARK: Verification
     //верификация юзера (перезагружаем список пользователей из базы данных Realm, если список НЕ пустой, то выполняем переход на следующий экран)
@@ -138,8 +157,61 @@ class LogInViewController: UIViewController {
             navigationController?.pushViewController(nextVC, animated: true)
         }
     }
+    
+    @objc func verifyDidTap() {
+        let biometryType = authorizationService.biometryTypeClarification()
+        
+        switch biometryType {
+        case .none:
+            self.alert(
+                title: "Error",
+                message: "Face ID may not be configured",
+                okActionTitle: "OK"
+            )
+        case .touchID, .faceID:
+            self.authorizationService.authorizeIfPossible { [weak self] status, error in
+                guard let self else { return }
+                guard let error else {
+                    DispatchQueue.main.async {
+                        [self] in
+                        let vc = ProfileViewController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    return
+                }
+                self.alert(
+                    title: "Error auth",
+                    message: error.localizedDescription,
+                    okActionTitle: "OK"
+                )
+            }
+        @unknown default:
+            return
+        }
+    }
+    
     //MARK: - authorization and alerts
     
+        func alert(
+            title: String,
+            message: String,
+            okActionTitle: String
+        ) {
+            
+            let alertView = UIAlertController(
+                title: title,
+                message: message,
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(
+                title: okActionTitle,
+                style: .default
+            )
+            alertView.addAction(okAction)
+            present(alertView, animated: true)
+        }
+            
     // Функция для проверки доступа пользователя
     func checkAccess(login: String, password: String) throws {
         
@@ -236,10 +308,18 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didShowKeyboard(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didHideKeyboard(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     // скрытие клавиатуры, расчет и определение перекрытия
@@ -308,6 +388,11 @@ class LogInViewController: UIViewController {
             logInbutton.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
             logInbutton.heightAnchor.constraint(equalToConstant: 50),
             logInbutton.leftAnchor.constraint(equalTo: super.view.leftAnchor, constant: 16),
+            
+            authButton.topAnchor.constraint(equalTo: logInbutton.bottomAnchor, constant: 16),
+            authButton.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
+            authButton.heightAnchor.constraint(equalToConstant: 50),
+            authButton.leftAnchor.constraint(equalTo: super.view.leftAnchor, constant: 16),
         ])
     }
 }

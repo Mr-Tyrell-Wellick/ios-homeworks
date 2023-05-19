@@ -29,6 +29,7 @@
 		F7553B7D2950940400B1B4FE /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7553B762950940400B1B4FE /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F7553B81295098DC00B1B4FE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FA218928FF093E00B6638A /* PostModel.swift */; };
 		F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7554C8428FAF48E00CF9421 /* LogInViewController.swift */; };
+		F76225BE2A150900006C2A00 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */; };
 		F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */; };
 		F77F3801298471940049B6FC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F3800298471940049B6FC /* CustomButton.swift */; };
 		F77F380329869FF20049B6FC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F380229869FF20049B6FC /* FeedModel.swift */; };
@@ -111,6 +112,7 @@
 		F7553B762950940400B1B4FE /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7553B782950940400B1B4FE /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		F7554C8428FAF48E00CF9421 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModels.swift; sourceTree = "<group>"; };
 		F77F3800298471940049B6FC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F77F380229869FF20049B6FC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		F706211129BD0433000A55CD /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				F76225BC2A1508D3006C2A00 /* AuthorizationService */,
 				F70E9D4629FB1CDE001B0E11 /* LocationService */,
 				F78F4BE329E1FD5B006857A6 /* CoreData */,
 				F7906EE929E812140052E218 /* Realm */,
@@ -243,6 +246,14 @@
 				F7553B782950940400B1B4FE /* StorageService.h */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		F76225BC2A1508D3006C2A00 /* AuthorizationService */ = {
+			isa = PBXGroup;
+			children = (
+				F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */,
+			);
+			path = AuthorizationService;
 			sourceTree = "<group>";
 		};
 		F78F4BE329E1FD5B006857A6 /* CoreData */ = {
@@ -553,6 +564,7 @@
 				F7846CF729C8C03100C29890 /* CheckerService.swift in Sources */,
 				F7B9B52C2907F83200C262F5 /* PhotoModel.swift in Sources */,
 				F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */,
+				F76225BE2A150900006C2A00 /* LocalAuthorizationService.swift in Sources */,
 				F7D555C32970AC2600E5DCBF /* Checker.swift in Sources */,
 				F71D779E28C8A17300F9412A /* AppDelegate.swift in Sources */,
 				F78F4BE029DC4FF0006857A6 /* RealmModel.swift in Sources */,
@@ -754,6 +766,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to ease authentication of Passcode";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
@@ -785,6 +798,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to ease authentication of Passcode";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
