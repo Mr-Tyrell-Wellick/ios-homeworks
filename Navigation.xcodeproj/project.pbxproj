@@ -31,6 +31,11 @@
 		F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7554C8428FAF48E00CF9421 /* LogInViewController.swift */; };
 		F76225BE2A150900006C2A00 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */; };
 		F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */; };
+		F77014542A292E8300D04FCE /* FavoriteViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */; };
+		F774B9F82A2A1C48003D4F02 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9F72A2A1C48003D4F02 /* FirebaseAuth */; };
+		F774B9FA2A2A1C52003D4F02 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9F92A2A1C52003D4F02 /* RealmSwift */; };
+		F774B9FC2A2A1C68003D4F02 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9FB2A2A1C68003D4F02 /* iOSIntPackage */; };
+		F774B9FE2A2A1C75003D4F02 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9FD2A2A1C75003D4F02 /* TinyConstraints */; };
 		F77F3801298471940049B6FC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F3800298471940049B6FC /* CustomButton.swift */; };
 		F77F380329869FF20049B6FC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F380229869FF20049B6FC /* FeedModel.swift */; };
 		F7846CF529C7228E00C29890 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F7846CF429C7228E00C29890 /* FirebaseAuth */; };
@@ -74,6 +79,13 @@
 			remoteGlobalIDString = F7553B752950940400B1B4FE;
 			remoteInfo = StorageService;
 		};
+		F77014552A292E8300D04FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F71D779228C8A17300F9412A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F71D779928C8A17300F9412A;
+			remoteInfo = Navigation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +126,8 @@
 		F7554C8428FAF48E00CF9421 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModels.swift; sourceTree = "<group>"; };
+		F77014512A292E8300D04FCE /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewControllerTests.swift; sourceTree = "<group>"; };
 		F77F3800298471940049B6FC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F77F380229869FF20049B6FC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		F7846CF629C8C03100C29890 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
@@ -169,6 +183,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F770144E2A292E8300D04FCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F774B9FC2A2A1C68003D4F02 /* iOSIntPackage in Frameworks */,
+				F774B9FA2A2A1C52003D4F02 /* RealmSwift in Frameworks */,
+				F774B9F82A2A1C48003D4F02 /* FirebaseAuth in Frameworks */,
+				F774B9FE2A2A1C75003D4F02 /* TinyConstraints in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -200,7 +225,9 @@
 			children = (
 				F71D779C28C8A17300F9412A /* Navigation */,
 				F7553B772950940400B1B4FE /* StorageService */,
+				F77014522A292E8300D04FCE /* NavigationTests */,
 				F71D779B28C8A17300F9412A /* Products */,
+				F774B9F62A2A1C48003D4F02 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +236,7 @@
 			children = (
 				F71D779A28C8A17300F9412A /* Navigation.app */,
 				F7553B762950940400B1B4FE /* StorageService.framework */,
+				F77014512A292E8300D04FCE /* NavigationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,6 +282,21 @@
 				F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */,
 			);
 			path = AuthorizationService;
+			sourceTree = "<group>";
+		};
+		F77014522A292E8300D04FCE /* NavigationTests */ = {
+			isa = PBXGroup;
+			children = (
+				F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */,
+			);
+			path = NavigationTests;
+			sourceTree = "<group>";
+		};
+		F774B9F62A2A1C48003D4F02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F78F4BE329E1FD5B006857A6 /* CoreData */ = {
@@ -473,6 +516,30 @@
 			productReference = F7553B762950940400B1B4FE /* StorageService.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F77014502A292E8300D04FCE /* NavigationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F77014592A292E8300D04FCE /* Build configuration list for PBXNativeTarget "NavigationTests" */;
+			buildPhases = (
+				F770144D2A292E8300D04FCE /* Sources */,
+				F770144E2A292E8300D04FCE /* Frameworks */,
+				F770144F2A292E8300D04FCE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F77014562A292E8300D04FCE /* PBXTargetDependency */,
+			);
+			name = NavigationTests;
+			packageProductDependencies = (
+				F774B9F72A2A1C48003D4F02 /* FirebaseAuth */,
+				F774B9F92A2A1C52003D4F02 /* RealmSwift */,
+				F774B9FB2A2A1C68003D4F02 /* iOSIntPackage */,
+				F774B9FD2A2A1C75003D4F02 /* TinyConstraints */,
+			);
+			productName = NavigationTests;
+			productReference = F77014512A292E8300D04FCE /* NavigationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -488,6 +555,10 @@
 					};
 					F7553B752950940400B1B4FE = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					F77014502A292E8300D04FCE = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = F71D779928C8A17300F9412A;
 					};
 				};
 			};
@@ -513,6 +584,7 @@
 			targets = (
 				F71D779928C8A17300F9412A /* Navigation */,
 				F7553B752950940400B1B4FE /* StorageService */,
+				F77014502A292E8300D04FCE /* NavigationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -536,6 +608,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F7553B742950940400B1B4FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F770144F2A292E8300D04FCE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -598,6 +677,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F770144D2A292E8300D04FCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77014542A292E8300D04FCE /* FavoriteViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -605,6 +692,11 @@
 			isa = PBXTargetDependency;
 			target = F7553B752950940400B1B4FE /* StorageService */;
 			targetProxy = F7553B7A2950940400B1B4FE /* PBXContainerItemProxy */;
+		};
+		F77014562A292E8300D04FCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F71D779928C8A17300F9412A /* Navigation */;
+			targetProxy = F77014552A292E8300D04FCE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -882,6 +974,44 @@
 			};
 			name = Release;
 		};
+		F77014572A292E8300D04FCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "rorshix97-gmail.com.NavigationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
+			};
+			name = Debug;
+		};
+		F77014582A292E8300D04FCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "rorshix97-gmail.com.NavigationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -908,6 +1038,15 @@
 			buildConfigurations = (
 				F7553B7F2950940400B1B4FE /* Debug */,
 				F7553B802950940400B1B4FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F77014592A292E8300D04FCE /* Build configuration list for PBXNativeTarget "NavigationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F77014572A292E8300D04FCE /* Debug */,
+				F77014582A292E8300D04FCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -954,6 +1093,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F75063AF2979A76500E36431 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		F774B9F72A2A1C48003D4F02 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7846CF329C7228E00C29890 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F774B9F92A2A1C52003D4F02 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F78F4BDA29DAE36C006857A6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		F774B9FB2A2A1C68003D4F02 /* iOSIntPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F75063AF2979A76500E36431 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			productName = iOSIntPackage;
+		};
+		F774B9FD2A2A1C75003D4F02 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7BC095D29B8C61F0046F01A /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
 		F7846CF429C7228E00C29890 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
