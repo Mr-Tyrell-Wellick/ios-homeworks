@@ -20,6 +20,8 @@ class LogInViewController: UIViewController {
     
     var realmManager = RealmManager()
     
+    var checkerService: CheckerServiceProtocol!
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +37,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создание кнопки "Log In"
-    private let logInbutton: UIButton = {
+    let logInbutton: UIButton = {
         let button = UIButton()
         button.setTitle(Strings.logInButton.localized, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -65,7 +67,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создание кнопки для ввода email or phone
-    private let logInTextField: UITextField = {
+    let logInTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Strings.logInTextField.localized
         textField.textColor = .black
@@ -88,7 +90,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создание кнопки для ввода password
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Strings.passwordTextField.localized
         textField.textColor = .black
@@ -123,7 +125,7 @@ class LogInViewController: UIViewController {
         self.view.backgroundColor = colorMainBackground
         self.setupGestures()
         self.navigationController?.navigationBar.isHidden = true
-       
+        
         addView()
         addConstraints()
         userVerification()
@@ -148,11 +150,11 @@ class LogInViewController: UIViewController {
         realmManager.reloadUserData()
         if !realmManager.realmUsers.isEmpty {
             let nextVC = ProfileViewController()
-            #if DEBUG
+#if DEBUG
             let userLogin = TestUserService(user: User(userName: Strings.userNameDebug.localized, avatar: UIImage(named: "LaloForTest") ?? UIImage(), status: "If you need a lawer - Better Call Saul!"))
-            #else
+#else
             let userLogin = CurrentUserService(user: User(userName: Strings.userNameRelease.localized, avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
-            #endif
+#endif
             nextVC.user_1 = userLogin.user
             navigationController?.pushViewController(nextVC, animated: true)
         }
@@ -192,26 +194,26 @@ class LogInViewController: UIViewController {
     
     //MARK: - authorization and alerts
     
-        func alert(
-            title: String,
-            message: String,
-            okActionTitle: String
-        ) {
-            
-            let alertView = UIAlertController(
-                title: title,
-                message: message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(
-                title: okActionTitle,
-                style: .default
-            )
-            alertView.addAction(okAction)
-            present(alertView, animated: true)
-        }
-            
+    func alert(
+        title: String,
+        message: String,
+        okActionTitle: String
+    ) {
+        
+        let alertView = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: okActionTitle,
+            style: .default
+        )
+        alertView.addAction(okAction)
+        present(alertView, animated: true)
+    }
+    
     // Функция для проверки доступа пользователя
     func checkAccess(login: String, password: String) throws {
         
@@ -259,33 +261,40 @@ class LogInViewController: UIViewController {
         let userLogin = CurrentUserService(user: User(userName: Strings.userNameRelease.localized, avatar: UIImage(named: "Lalo") ?? UIImage(), status: "I am the boss"))
 #endif
         
-    // MARK: - расскоментировать
+        // MARK: - расскоментировать
         // Проверяем введенные учетные данные с помощью сервиса CheckerService и обрабатываем результат с помощью блока closure
-        CheckerService().checkCredentials(login: enteredUserLogin, password: enteredPassword) { result in
-            if result == "Success authorization" {
+        checkerService.checkCredentials(
+            login: enteredUserLogin,
+            password: enteredPassword
+        ) { result in
+            switch result {
+            case .success:
                 let profileViewController = ProfileViewController()
                 profileViewController.user_1 = userLogin.user
                 //если авторизация прошла успешно, то сохраняем нового пользователя в Realm
                 self.realmManager.saveRealmUser(login: enteredUserLogin, password: enteredPassword)
                 self.navigationController?.pushViewController(profileViewController, animated: true)
-            } else if result == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                self.badAlertLogin(message: result) { result in
-                    CheckerService().signUp(login: enteredUserLogin, password: enteredPassword) { result in
-                        if result == "Success registration" {
-                            //если регистрация прошла успешно, то сохраняем нового пользователя в Realm
-                            self.realmManager.saveRealmUser(login: enteredUserLogin, password: enteredPassword)
-                            self.goodAlert(message: result)
-                        } else {
-                            self.badAlertPassword(message: result)
+            case.error(let error):
+                if error == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    self.badAlertLogin(message: error) { result in
+                        self.checkerService.signUp(login: enteredUserLogin, password: enteredPassword) { result in
+                            switch result {
+                            case .success:
+                                //если регистрация прошла успешно, то сохраняем нового пользователя в Realm
+                                self.realmManager.saveRealmUser(login: enteredUserLogin, password: enteredPassword)
+                                self.goodAlert(message: "Success registration")
+                            case .error(let error):
+                                self.badAlertPassword(message: error)
+                            }
                         }
                     }
+                } else {
+                    self.badAlertPassword(message: error)
                 }
-            } else {
-                self.badAlertPassword(message: result)
             }
         }
     }
-         
+    
     // функция для загрузки данных пользователя из Realm при запуске приложения
     func loadUserData() {
         realmManager.reloadUserData()

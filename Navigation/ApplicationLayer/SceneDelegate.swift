@@ -41,6 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Внедряем зависимость контроллера LoginViewController от MyLoginFactory
         let loginVC = LogInViewController()
+        loginVC.checkerService = CheckerService()
         loginVC.loginDelegate = MyLoginFactory().makeLoginInspector()
         loginTabNavigationController = .init(rootViewController: loginVC)
         
@@ -86,30 +87,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: - 9
         // Генерируем рандомно элемент и выполняем запрос в сеть
         appConfiguration = AppConfiguration.allCases.randomElement()
-        let url = String(appConfiguration?.rawValue ?? "")
-        NetWorkService.performRequest(with: url)
-        print("Downloading data from: \(url)")
-        
-        
-        //MARK: - 10 (инициализируем кейсы)
-        appConfiguration = AppConfiguration.titleData
-        if let url = appConfiguration {
-            InfoNetworkService.titleRequest(for: url)
-        } else {
-            print("Wrong URL to request")
+        if !CommandLine.arguments.contains("-tests") {
+            let url = String(appConfiguration?.rawValue ?? "")
+            NetWorkService.performRequest(with: url)
+            print("Downloading data from: \(url)")
         }
         
-        appConfiguration = AppConfiguration.planetData
-        if let url = appConfiguration {
-            InfoNetworkService.orbitalRequest(for: url)
-        } else {
-            print("Wrong URL to request")
+        //MARK: - 10 (инициализируем кейсы)
+        if !CommandLine.arguments.contains("-tests") {
+            appConfiguration = AppConfiguration.titleData
+            if let url = appConfiguration {
+                InfoNetworkService.titleRequest(for: url)
+            } else {
+                print("Wrong URL to request")
+            }
+            
+            appConfiguration = AppConfiguration.planetData
+            if let url = appConfiguration {
+                InfoNetworkService.orbitalRequest(for: url)
+            } else {
+                print("Wrong URL to request")
+            }
         }
     }
     
     //MARK: - Others
     func sceneDidDisconnect(_ scene: UIScene) {
-        
-        try? Auth.auth().signOut()
+        if !CommandLine.arguments.contains("-tests") {
+            try? Auth.auth().signOut()
+        }
     }
 }

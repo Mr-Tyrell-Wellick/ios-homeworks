@@ -23,6 +23,9 @@
 		F73B5A1B29B74DE800557D42 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1A29B74DE800557D42 /* PlayerController.swift */; };
 		F73B5A1D29B7585A00557D42 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B5A1C29B7585A00557D42 /* PlayerButton.swift */; };
 		F74B72FD28CCAB3A00D10E21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */; };
+		F74F820E2A2E585F00F8EA41 /* ProfileHeaderViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F820D2A2E585F00F8EA41 /* ProfileHeaderViewDelegateMock.swift */; };
+		F74F82102A2E5A2300F8EA41 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F820F2A2E5A2300F8EA41 /* LoginViewControllerTests.swift */; };
+		F74F82122A2E5AAB00F8EA41 /* CheckerServiceProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74F82112A2E5AAB00F8EA41 /* CheckerServiceProtocolMock.swift */; };
 		F75063B12979A76500E36431 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F75063B02979A76500E36431 /* iOSIntPackage */; };
 		F7553B792950940400B1B4FE /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = F7553B782950940400B1B4FE /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7553B7C2950940400B1B4FE /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7553B762950940400B1B4FE /* StorageService.framework */; };
@@ -31,7 +34,7 @@
 		F7554C8528FAF48E00CF9421 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7554C8428FAF48E00CF9421 /* LogInViewController.swift */; };
 		F76225BE2A150900006C2A00 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */; };
 		F76B9FDF2911CB7F0075067E /* ExtensionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */; };
-		F77014542A292E8300D04FCE /* FavoriteViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */; };
+		F77014542A292E8300D04FCE /* ProfileHeaderViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77014532A292E8300D04FCE /* ProfileHeaderViewTests.swift */; };
 		F774B9F82A2A1C48003D4F02 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9F72A2A1C48003D4F02 /* FirebaseAuth */; };
 		F774B9FA2A2A1C52003D4F02 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9F92A2A1C52003D4F02 /* RealmSwift */; };
 		F774B9FC2A2A1C68003D4F02 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F774B9FB2A2A1C68003D4F02 /* iOSIntPackage */; };
@@ -121,13 +124,16 @@
 		F73B5A1A29B74DE800557D42 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		F73B5A1C29B7585A00557D42 /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		F74B72FC28CCAB3A00D10E21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		F74F820D2A2E585F00F8EA41 /* ProfileHeaderViewDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewDelegateMock.swift; sourceTree = "<group>"; };
+		F74F820F2A2E5A2300F8EA41 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		F74F82112A2E5AAB00F8EA41 /* CheckerServiceProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocolMock.swift; sourceTree = "<group>"; };
 		F7553B762950940400B1B4FE /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7553B782950940400B1B4FE /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		F7554C8428FAF48E00CF9421 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F76225BD2A150900006C2A00 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		F76B9FDE2911CB7F0075067E /* ExtensionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModels.swift; sourceTree = "<group>"; };
 		F77014512A292E8300D04FCE /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewControllerTests.swift; sourceTree = "<group>"; };
+		F77014532A292E8300D04FCE /* ProfileHeaderViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewTests.swift; sourceTree = "<group>"; };
 		F77F3800298471940049B6FC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F77F380229869FF20049B6FC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		F7846CF629C8C03100C29890 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
@@ -267,6 +273,24 @@
 			path = ApplicationLayer;
 			sourceTree = "<group>";
 		};
+		F74F820B2A2E571300F8EA41 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F74F820F2A2E5A2300F8EA41 /* LoginViewControllerTests.swift */,
+				F74F82112A2E5AAB00F8EA41 /* CheckerServiceProtocolMock.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		F74F820C2A2E572A00F8EA41 /* ProfileHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				F77014532A292E8300D04FCE /* ProfileHeaderViewTests.swift */,
+				F74F820D2A2E585F00F8EA41 /* ProfileHeaderViewDelegateMock.swift */,
+			);
+			path = ProfileHeaderView;
+			sourceTree = "<group>";
+		};
 		F7553B772950940400B1B4FE /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +311,8 @@
 		F77014522A292E8300D04FCE /* NavigationTests */ = {
 			isa = PBXGroup;
 			children = (
-				F77014532A292E8300D04FCE /* FavoriteViewControllerTests.swift */,
+				F74F820C2A2E572A00F8EA41 /* ProfileHeaderView */,
+				F74F820B2A2E571300F8EA41 /* LoginViewController */,
 			);
 			path = NavigationTests;
 			sourceTree = "<group>";
@@ -681,7 +706,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F77014542A292E8300D04FCE /* FavoriteViewControllerTests.swift in Sources */,
+				F74F82102A2E5A2300F8EA41 /* LoginViewControllerTests.swift in Sources */,
+				F74F820E2A2E585F00F8EA41 /* ProfileHeaderViewDelegateMock.swift in Sources */,
+				F74F82122A2E5AAB00F8EA41 /* CheckerServiceProtocolMock.swift in Sources */,
+				F77014542A292E8300D04FCE /* ProfileHeaderViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
